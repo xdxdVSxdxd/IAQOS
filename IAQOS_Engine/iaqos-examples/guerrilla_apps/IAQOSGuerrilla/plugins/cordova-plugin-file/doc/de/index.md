@@ -214,7 +214,7 @@ Die folgenden Datenpfade werden unterstützt: * `applicationDirectory` - `xhr` v
 *   Jeder Browser verwendet ein eigene Sandbox Dateisystem. IE und Firefox verwenden IndexedDB als Basis. Alle Browser verwenden Schrägstrich als Verzeichnistrennzeichen in einem Pfad.
 *   Directory-Einträge müssen nacheinander erstellt werden. Z. B. der Aufruf `fs.root.getDirectory ("dir1/Ordner2 ', {create:true}, SuccessCallback, ErrorCallback)` schlägt fehl, wenn dir1 nicht existierte.
 *   Das Plugin fordert Benutzer die Berechtigung zum permanenten Speicher beim ersten Start Anwendung verwenden. 
-*   Plugin unterstützt `Cdvfile://***REMOVED***` (lokale Ressourcen) nur. D.h. externe Ressourcen nicht über `Cdvfile` unterstützt.
+*   Plugin unterstützt `Cdvfile://localhost` (lokale Ressourcen) nur. D.h. externe Ressourcen nicht über `Cdvfile` unterstützt.
 *   Das Plugin folgt nicht ["File System API 8.3 Naming Einschränkungen"][4].
 *   BLOB und Datei "`close`-Funktion wird nicht unterstützt.
 *   `FileSaver` und `BlobBuilder` werden von diesem Plugin nicht unterstützt und müssen nicht geboren.
@@ -223,7 +223,7 @@ Die folgenden Datenpfade werden unterstützt: * `applicationDirectory` - `xhr` v
 *   Über Konstruktor erstellte Dateien werden nicht unterstützt. Sie sollten stattdessen die entry.file-Methode verwenden.
 *   Jeder Browser verwendet eine eigene Form für Blob-URL-Verweise.
 *   `readAsDataURL`-Funktion wird unterstützt, aber die Mediatype in Chrom hängt von der Eintrag Namenerweiterung, Mediatype im IE immer leer ist (das ist dasselbe wie `Text-Plain` gemäß der Spezifikation), Mediatype in Firefox ist immer `Application/Octet-Stream`. Beispielsweise, wenn der Inhalt `Abcdefg` gibt dann Firefox `Daten: Anwendung / Octet-Stream; base64, YWJjZGVmZw ==`, IE gibt `Daten:; base64, YWJjZGVmZw ==`, Chrom gibt `Daten: < Mediatype je nach Erweiterung des Eintragsnamens >; base64, YWJjZGVmZw ==`.
-*   `ToInternalURL` gibt den Pfad zurück, in der Form `file:///persistent/path/to/entry` (Firefox, IE). Chrom gibt den Pfad zurück, in der Form `cdvfile://***REMOVED***/persistent/file`.
+*   `ToInternalURL` gibt den Pfad zurück, in der Form `file:///persistent/path/to/entry` (Firefox, IE). Chrom gibt den Pfad zurück, in der Form `cdvfile://localhost/persistent/file`.
 
  [4]: http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions
 
@@ -235,14 +235,14 @@ Die folgenden Datenpfade werden unterstützt: * `applicationDirectory` - `xhr` v
     window.addEventListener('filePluginIsReady', function(){ console.log('File plugin is ready');}, false);
     
 
-`Window.isFilePluginReadyRaised`-Funktion können Sie überprüfen, ob Ereignis bereits ausgelöst wurde. -window.requestFileSystem temporär und PERSISTENTE Dateisystem-Quoten sind nicht begrenzt, in Chrom. -Um die dauerhafte Speicherung in Chrom zu erhöhen benötigen Sie `window.initPersistentFileSystem`-Methode aufrufen. Permanenter Speicherkontingent beträgt 5 MB standardmäßig. -Chrome erforderlich `--erlauben-Datei-Zugriff-aus-Files` Argument an den Support API via `file:///` Protokoll führen. -`Datei`-Objekt wird nicht geändert werden, wenn Sie Flag verwenden `{create:true}` als einen vorhandenen `Eintrag` zu erhalten. -Veranstaltungen `cancelable`-Eigenschaft festgelegt ist in Chrom wahr. Dies widerspricht der [Spezifikation][5]. -`toURL`-Funktion in Chrome zurück `Dateisystem:`-Pfad je nach Anwendungshost vorangestellt. Z. B. `filesystem:file:///persistent/somefile.txt`, `Filesystem:http://***REMOVED***:8080/persistent/somefile.txt`. -`toURL` Funktionsergebnis enthält keine nachgestellten Schrägstrich bei Verzeichniseintrag. Chrom löst Verzeichnisse mit Schrägstrich-gezogene Urls aber korrekt. -`ResolveLocalFileSystemURL`-Methode erfordert die eingehenden `Url` `Dateisystem` Präfix haben. Beispielsweise sollte die `Url`-Parameter für `ResolveLocalFileSystemURL` in der Form `filesystem:file:///persistent/somefile.txt` im Gegensatz zu der Form `file:///persistent/somefile.txt` in Android. -Veraltete `ToNativeURL`-Funktion wird nicht unterstützt und muss keinen Stub. -`SetMetadata`-Funktion ist nicht in den Spezifikationen angegeben und nicht unterstützt. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, statt SYNTAX_ERR(code: 8) auf anfordern des Dateisystems nicht existent. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, anstatt PATH_EXISTS_ERR(code: 12) zu versuchen, die ausschließlich eine Datei oder ein Verzeichnis zu erstellen, die bereits vorhanden ist. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, anstatt NO_MODIFICATION_ALLOWED_ERR(code: 6) zu versuchen, rufen Sie RemoveRecursively auf das Root-Dateisystem. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, anstatt NOT_FOUND_ERR(code: 1) zu versuchen, MoveTo-Verzeichnis, das nicht vorhanden ist.
+`Window.isFilePluginReadyRaised`-Funktion können Sie überprüfen, ob Ereignis bereits ausgelöst wurde. -window.requestFileSystem temporär und PERSISTENTE Dateisystem-Quoten sind nicht begrenzt, in Chrom. -Um die dauerhafte Speicherung in Chrom zu erhöhen benötigen Sie `window.initPersistentFileSystem`-Methode aufrufen. Permanenter Speicherkontingent beträgt 5 MB standardmäßig. -Chrome erforderlich `--erlauben-Datei-Zugriff-aus-Files` Argument an den Support API via `file:///` Protokoll führen. -`Datei`-Objekt wird nicht geändert werden, wenn Sie Flag verwenden `{create:true}` als einen vorhandenen `Eintrag` zu erhalten. -Veranstaltungen `cancelable`-Eigenschaft festgelegt ist in Chrom wahr. Dies widerspricht der [Spezifikation][5]. -`toURL`-Funktion in Chrome zurück `Dateisystem:`-Pfad je nach Anwendungshost vorangestellt. Z. B. `filesystem:file:///persistent/somefile.txt`, `Filesystem:http://localhost:8080/persistent/somefile.txt`. -`toURL` Funktionsergebnis enthält keine nachgestellten Schrägstrich bei Verzeichniseintrag. Chrom löst Verzeichnisse mit Schrägstrich-gezogene Urls aber korrekt. -`ResolveLocalFileSystemURL`-Methode erfordert die eingehenden `Url` `Dateisystem` Präfix haben. Beispielsweise sollte die `Url`-Parameter für `ResolveLocalFileSystemURL` in der Form `filesystem:file:///persistent/somefile.txt` im Gegensatz zu der Form `file:///persistent/somefile.txt` in Android. -Veraltete `ToNativeURL`-Funktion wird nicht unterstützt und muss keinen Stub. -`SetMetadata`-Funktion ist nicht in den Spezifikationen angegeben und nicht unterstützt. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, statt SYNTAX_ERR(code: 8) auf anfordern des Dateisystems nicht existent. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, anstatt PATH_EXISTS_ERR(code: 12) zu versuchen, die ausschließlich eine Datei oder ein Verzeichnis zu erstellen, die bereits vorhanden ist. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, anstatt NO_MODIFICATION_ALLOWED_ERR(code: 6) zu versuchen, rufen Sie RemoveRecursively auf das Root-Dateisystem. -INVALID_MODIFICATION_ERR (Code: 9) wird ausgelöst, anstatt NOT_FOUND_ERR(code: 1) zu versuchen, MoveTo-Verzeichnis, das nicht vorhanden ist.
 
  [5]: http://dev.w3.org/2009/dap/file-system/file-writer.html
 
 ### Auf der Grundlage von IndexedDB Impl Macken (Firefox und IE)
 
 *   `.` und `.` werden nicht unterstützt.
-*   IE unterstützt keine `file:///`-Modus; nur der Modus für gehostete ist unterstützten (Http://***REMOVED***:xxxx).
+*   IE unterstützt keine `file:///`-Modus; nur der Modus für gehostete ist unterstützten (Http://localhost:xxxx).
 *   Firefox Dateisystem Größe ist nicht begrenzt, aber jede 50MB-Erweiterung wird eine Benutzer die Berechtigung anzufordern. IE10 können bis zu 10mb kombinierte AppCache und IndexedDB in Implementierung des Dateisystems verwendet, ohne Aufforderung, sobald Sie dieses Niveau, werden, das Sie aufgefordert werden schlagen, wenn Sie es bis Max 250 mb pro Standort erhöht werden sollen. `Size`-Parameter für `RequestFileSystem` Funktion wirkt also nicht Dateisystem in Firefox und IE.
 *   `ReadAsBinaryString` Funktion heißt es nicht in die Angaben und in IE nicht unterstützt und muss keinen Stub.
 *   `file.Type` ist immer null.
@@ -284,7 +284,7 @@ Dies wurde vor allem ein Problem mit dem File-Transfer-Plugin, die zuvor-Absolut
 
 In v1.1.0 wurde der Rückgabewert von `toURL()` (siehe \[CB-6394\] (https://issues.apache.org/jira/browse/CB-6394)) geändert, um eine absolute "file://" URL zurückgeben. wo immer möglich. Sicherstellung einer ' Cdvfile:'-URL können Sie an `toInternalURL()`. Diese Methode gibt jetzt Dateisystem URLs der Form zurück.
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 die benutzt werden können, um die Datei eindeutig zu identifizieren.

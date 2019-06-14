@@ -95,7 +95,7 @@ void Camera::onImageSaved(QString path) {
             cbParams = QString("\"%1\"").arg(content.data());
             image.remove();
         } else {
-            cbParams = CordovaInternal::format(QString("file://***REMOVED***") + absolutePath);
+            cbParams = CordovaInternal::format(QString("file://localhost") + absolutePath);
         }
     }
 

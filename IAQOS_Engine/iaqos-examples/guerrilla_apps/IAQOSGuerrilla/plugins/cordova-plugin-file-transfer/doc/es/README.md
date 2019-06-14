@@ -100,7 +100,7 @@ El objeto `FileTransfer` proporciona una manera para subir archivos utilizando u
 ### Ejemplo
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -204,7 +204,7 @@ A `FileUploadResult` objeto se pasa a la devolución del éxito de la `FileTrans
 ### Ejemplo
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -240,7 +240,7 @@ Aborta a una transferencia en curso. El callback onerror se pasa un objeto FileT
 ### Ejemplo
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -305,7 +305,7 @@ Si va a actualizar a una nueva (1.0.0 o más reciente) versión del archivo y pr
 
 `FileEntry.toURL()`y `DirectoryEntry.toURL()` devolver un filesystem dirección URL de la forma
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 que puede ser utilizado en lugar de la ruta del archivo absoluta tanto en `download()` y `upload()` los métodos.

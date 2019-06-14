@@ -149,7 +149,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         } else if (pictureUrl.indexOf('data:image/jpeg;base64') === 0) {
             // do nothing
         } else {
-            var path = pictureUrl.replace(/^file:\/\/(***REMOVED***)?/, '').replace(/%20/g, ' ');
+            var path = pictureUrl.replace(/^file:\/\/(localhost)?/, '').replace(/%20/g, ' ');
             fileEntry = new FileEntry('image_name.png', path);
         }
     }

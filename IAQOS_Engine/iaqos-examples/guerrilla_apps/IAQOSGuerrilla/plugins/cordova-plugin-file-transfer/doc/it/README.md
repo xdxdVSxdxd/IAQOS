@@ -100,7 +100,7 @@ L'oggetto `FileTransfer` fornisce un modo per caricare i file utilizzando una ri
 ### Esempio
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -204,7 +204,7 @@ Un oggetto `FileUploadResult` viene passato al metodo di callback del metodo `up
 ### Esempio
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -240,7 +240,7 @@ Interrompe un trasferimento in corso. Il callback onerror viene passato un ogget
 ### Esempio
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -305,7 +305,7 @@ Se si esegue l'aggiornamento a una nuova (1.0.0 o più recente) versione del Fil
 
 `FileEntry.toURL()` e `DirectoryEntry.toURL()` restituiscono un filesystem URL del modulo
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 che può essere utilizzato al posto del percorso assoluto nei metodi sia `download()` e `upload()`.

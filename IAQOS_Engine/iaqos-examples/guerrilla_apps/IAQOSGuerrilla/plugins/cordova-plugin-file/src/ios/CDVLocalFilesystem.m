@@ -127,9 +127,9 @@
     if (fullPath) {
         NSString* escapedPath = [fullPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         if ([fullPath hasPrefix:@"/"]) {
-            return [CDVFilesystemURL fileSystemURLWithString:[NSString stringWithFormat:@"%@://***REMOVED***/%@%@", kCDVFilesystemURLPrefix, self.name, escapedPath]];
+            return [CDVFilesystemURL fileSystemURLWithString:[NSString stringWithFormat:@"%@://localhost/%@%@", kCDVFilesystemURLPrefix, self.name, escapedPath]];
         }
-        return [CDVFilesystemURL fileSystemURLWithString:[NSString stringWithFormat:@"%@://***REMOVED***/%@/%@", kCDVFilesystemURLPrefix, self.name, escapedPath]];
+        return [CDVFilesystemURL fileSystemURLWithString:[NSString stringWithFormat:@"%@://localhost/%@/%@", kCDVFilesystemURLPrefix, self.name, escapedPath]];
     }
     return nil;
 }

@@ -100,7 +100,7 @@
 ### 예를 들어
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -204,7 +204,7 @@
 ### 예를 들어
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -240,7 +240,7 @@
 ### 예를 들어
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -305,7 +305,7 @@
 
 폼의 파일 URL을 반환 하는 `FileEntry.toURL()` 및 `DirectoryEntry.toURL()`
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 어떤 `download()` 및 `upload()` 방법에서 절대 파일 경로 대신 사용할 수 있습니다.

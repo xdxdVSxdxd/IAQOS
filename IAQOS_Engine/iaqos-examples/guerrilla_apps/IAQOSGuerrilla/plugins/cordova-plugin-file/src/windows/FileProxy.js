@@ -169,7 +169,7 @@ utils.extend(WinFS, FileSystem);
 
 WinFS.prototype.__format__ = function (fullPath) {
     var path = sanitize('/' + this.name + (fullPath[0] === '/' ? '' : '/') + FileSystem.encodeURIPath(fullPath));
-    return 'cdvfile://***REMOVED***' + path;
+    return 'cdvfile://localhost' + path;
 };
 
 var windowsPaths = {
@@ -238,7 +238,7 @@ function getFilesystemFromPath (path) {
     return res;
 }
 
-var msapplhRE = new RegExp('^ms-appdata://***REMOVED***/');
+var msapplhRE = new RegExp('^ms-appdata://localhost/');
 function pathFromURL (url) {
     url = url.replace(msapplhRE, 'ms-appdata:///');
     var path = decodeURIComponent(url);
@@ -252,7 +252,7 @@ function pathFromURL (url) {
         }
     }
 
-    ['file://', 'ms-appdata:///', 'ms-appx://', 'cdvfile://***REMOVED***/'].every(function (p) {
+    ['file://', 'ms-appdata:///', 'ms-appx://', 'cdvfile://localhost/'].every(function (p) {
         if (path.indexOf(p) !== 0) { return true; }
         var thirdSlash = path.indexOf('/', p.length);
         if (thirdSlash < 0) {
@@ -273,7 +273,7 @@ function getFilesystemFromURL (url) {
         Object.keys(allfs).every(function (fsn) {
             var fs = allfs[fsn];
             if (url.indexOf(fs.root.nativeURL) === 0 ||
-                url.indexOf('cdvfile://***REMOVED***/' + fs.name + '/') === 0) {
+                url.indexOf('cdvfile://localhost/' + fs.name + '/') === 0) {
                 res = fs;
                 return false;
             }

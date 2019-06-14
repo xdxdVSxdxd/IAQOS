@@ -3400,21 +3400,21 @@ exports.defineAutoTests = function () {
             });
             it('file.spec.118 should not resolve native URLs outside of FS roots', function (done) {
                 // lookup file system entry
-                window.resolveLocalFileSystemURL('file://***REMOVED***/this.is.an.invalid.url', succeed.bind(null, done, 'window.resolveLocalFileSystemURL - Unexpected success callback, it should not resolve invalid URL: file://***REMOVED***/this.is.an.invalid.url'), function (error) {
+                window.resolveLocalFileSystemURL('file://localhost/this.is.an.invalid.url', succeed.bind(null, done, 'window.resolveLocalFileSystemURL - Unexpected success callback, it should not resolve invalid URL: file://localhost/this.is.an.invalid.url'), function (error) {
                     expect(error).toBeDefined();
                     done();
                 });
             });
             it('file.spec.119 should not resolve invalid native URLs', function (done) {
                 // lookup file system entry
-                window.resolveLocalFileSystemURL('file://***REMOVED***', succeed.bind(null, done, 'window.resolveLocalFileSystemURL - Unexpected success callback, it should not resolve invalid URL: file://***REMOVED***'), function (error) {
+                window.resolveLocalFileSystemURL('file://localhost', succeed.bind(null, done, 'window.resolveLocalFileSystemURL - Unexpected success callback, it should not resolve invalid URL: file://localhost'), function (error) {
                     expect(error).toBeDefined();
                     done();
                 });
             });
             it('file.spec.120 should not resolve invalid native URLs with query strings', function (done) {
                 // lookup file system entry
-                window.resolveLocalFileSystemURL('file://***REMOVED***?test/test', succeed.bind(null, done, 'window.resolveLocalFileSystemURL - Unexpected success callback, it should not resolve invalid URL: file://***REMOVED***?test/test'), function (error) {
+                window.resolveLocalFileSystemURL('file://localhost?test/test', succeed.bind(null, done, 'window.resolveLocalFileSystemURL - Unexpected success callback, it should not resolve invalid URL: file://localhost?test/test'), function (error) {
                     expect(error).toBeDefined();
                     done();
                 });
@@ -3431,12 +3431,12 @@ exports.defineAutoTests = function () {
                     }, failed.bind(null, done, 'resolveLocalFileSystemURL - Error resolving file URL: ' + entry.toNativeURL()));
                 }, failed.bind(null, done, 'createFile - Error creating file: ' + fileName));
             });
-            it('file.spec.122 should resolve native URLs returned by API with ***REMOVED***', function (done) {
+            it('file.spec.122 should resolve native URLs returned by API with localhost', function (done) {
                 var fileName = 'native.resolve.uri2';
                 // create a new file entry
                 createFile(fileName, function (entry) {
                     var url = entry.toNativeURL();
-                    url = url.replace('///', '//***REMOVED***/');
+                    url = url.replace('///', '//localhost/');
                     resolveLocalFileSystemURL(url, function (fileEntry) {
                         expect(fileEntry.fullPath).toCanonicallyMatch(root.fullPath + '/' + fileName);
                         // cleanup
@@ -3457,12 +3457,12 @@ exports.defineAutoTests = function () {
                     }, failed.bind(null, done, 'resolveLocalFileSystemURL - Error resolving file URL: ' + url));
                 }, failed.bind(null, done, 'createFile - Error creating file: ' + fileName));
             });
-            it('file.spec.124 should resolve native URLs returned by API with ***REMOVED*** and query string', function (done) {
+            it('file.spec.124 should resolve native URLs returned by API with localhost and query string', function (done) {
                 var fileName = 'native.resolve.uri4';
                 // create a new file entry
                 createFile(fileName, function (entry) {
                     var url = entry.toNativeURL();
-                    url = url.replace('///', '//***REMOVED***/') + '?test/test';
+                    url = url.replace('///', '//localhost/') + '?test/test';
                     resolveLocalFileSystemURL(url, function (fileEntry) {
                         /* eslint-enable no-undef */
                         expect(fileEntry.fullPath).toCanonicallyMatch(root.fullPath + '/' + fileName);
@@ -3679,7 +3679,7 @@ exports.defineAutoTests = function () {
                     pending();
                 }
 
-                resolveLocalFileSystemURL('cdvfile://***REMOVED***/' + cdvfileApplicationDirectoryFsRootName + '/', function (applicationDirectoryRoot) {
+                resolveLocalFileSystemURL('cdvfile://localhost/' + cdvfileApplicationDirectoryFsRootName + '/', function (applicationDirectoryRoot) {
                     expect(applicationDirectoryRoot.isFile).toBe(false);
                     expect(applicationDirectoryRoot.isDirectory).toBe(true);
                     expect(applicationDirectoryRoot.name).toCanonicallyMatch('');
@@ -3688,7 +3688,7 @@ exports.defineAutoTests = function () {
 
                     // Requires HelloCordova www assets, <allow-navigation href="cdvfile:*" /> in config.xml or
                     // cdvfile: in CSP and <access origin="cdvfile://*" /> in config.xml
-                    resolveLocalFileSystemURL('cdvfile://***REMOVED***/' + cdvfileApplicationDirectoryFsRootName + '/www/img/logo.png', function (entry) {
+                    resolveLocalFileSystemURL('cdvfile://localhost/' + cdvfileApplicationDirectoryFsRootName + '/www/img/logo.png', function (entry) {
                         /* eslint-enable no-undef */
                         expect(entry.isFile).toBe(true);
                         expect(entry.isDirectory).toBe(false);
@@ -3994,7 +3994,7 @@ exports.defineAutoTests = function () {
 exports.defineManualTests = function (contentEl, createActionButton) {
 
     function resolveFs (fsname) {
-        var fsURL = 'cdvfile://***REMOVED***/' + fsname + '/';
+        var fsURL = 'cdvfile://localhost/' + fsname + '/';
         logMessage('Resolving URL: ' + fsURL);
         /* eslint-disable no-undef */
         resolveLocalFileSystemURL(fsURL, function (entry) {
@@ -4019,7 +4019,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
                 logMessage('Temporary file is at ' + entry.toNativeURL());
                 if (entry.toNativeURL().substring(0, 12) === 'file:///var/') {
                     logMessage('File starts with /var/, trying /private/var');
-                    var newURL = 'file://***REMOVED***/private/var/' + entry.toNativeURL().substring(12) + '?and=another_thing';
+                    var newURL = 'file://localhost/private/var/' + entry.toNativeURL().substring(12) + '?and=another_thing';
                     // var newURL = entry.toNativeURL();
                     logMessage(newURL, 'blue');
                     resolveLocalFileSystemURL(newURL, function (newEntry) {

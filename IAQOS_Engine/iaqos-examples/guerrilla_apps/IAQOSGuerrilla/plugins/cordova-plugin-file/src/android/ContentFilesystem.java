@@ -70,7 +70,7 @@ public class ContentFilesystem extends Filesystem {
         }
         Uri.Builder b = new Uri.Builder()
             .scheme(LocalFilesystemURL.FILESYSTEM_PROTOCOL)
-            .authority("***REMOVED***")
+            .authority("localhost")
             .path(name)
             .appendPath(inputURL.getAuthority());
         if (subPath.length() > 0) {

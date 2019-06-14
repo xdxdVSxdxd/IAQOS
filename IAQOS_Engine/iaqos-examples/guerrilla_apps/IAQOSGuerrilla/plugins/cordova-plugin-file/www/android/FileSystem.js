@@ -43,6 +43,6 @@ module.exports = {
             }
         }
 
-        return FILESYSTEM_PROTOCOL + '://***REMOVED***/' + this.name + path; // eslint-disable-line no-undef
+        return FILESYSTEM_PROTOCOL + '://localhost/' + this.name + path; // eslint-disable-line no-undef
     }
 };

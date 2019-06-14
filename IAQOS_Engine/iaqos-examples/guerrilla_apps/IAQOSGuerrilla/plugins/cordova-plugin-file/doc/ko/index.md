@@ -214,7 +214,7 @@ IOS 디바이스에 영구 파일을 저장할 두 개의 유효한 위치가 �
 *   각 브라우저는 샌드박스 자체 파일 시스템을 사용합니다. IE와 파이어 폭스 기반으로 IndexedDB를 사용합니다. 모든 브라우저는 경로에서 디렉터리 구분 기호로 슬래시를 사용합니다.
 *   디렉터리 항목을 연속적으로 만들 수 있다. 예를 들어 전화 `fs.root.getDirectory ('dir1/dir2 ', {create:true}, successCallback, errorCallback)` d i r 1 존재 하지 않은 경우 실패 합니다.
 *   플러그인 응용 프로그램 처음 시작할 영구 저장소를 사용 하 여 사용자 권한을 요청 합니다. 
-*   플러그인 지원 `cdvfile://***REMOVED***` (로컬 리소스)만. 즉, 외부 리소스는 `cdvfile`를 통해 지원 되지 않습니다..
+*   플러그인 지원 `cdvfile://localhost` (로컬 리소스)만. 즉, 외부 리소스는 `cdvfile`를 통해 지원 되지 않습니다..
 *   플러그인 ["파일 시스템 API 8.3 명명 제한"을][4] 수행 하지 않습니다..
 *   Blob 및 파일 ' `close` 함수는 지원 되지 않습니다.
 *   `FileSaver` 및 `BlobBuilder`는이 플러그 접속식에 의해 지원 되지 않습니다 그리고 명세서를 필요가 없습니다.
@@ -223,7 +223,7 @@ IOS 디바이스에 영구 파일을 저장할 두 개의 유효한 위치가 �
 *   생성자를 통해 생성 된 파일은 지원 되지 않습니다. Entry.file 메서드를 대신 사용 해야 합니다.
 *   각 브라우저 blob URL 참조에 대 한 그것의 자신의 형태를 사용합니다.
 *   `readAsDataURL` 기능을 지원 하지만 크롬에서 mediatype 항목 이름 확장명에 따라 달라 집니다, 그리고 mediatype IE에는 항상 빈 (`텍스트 일반` 사양에 따라 동일), 파이어 폭스에서 mediatype은 항상 `응용 프로그램/8 진수 스트림`. 예를 들어, 콘텐츠는 `abcdefg` 다음 파이어 폭스 반환 `데이터: 응용 프로그램 / 8 진수 스트림; base64, YWJjZGVmZw = =`, 즉 반환 `데이터:; base64, YWJjZGVmZw = =`, 반환 크롬 `데이터: < 항목 이름의 확장에 따라 mediatype >; base64, YWJjZGVmZw = =`.
-*   `toInternalURL` 양식 `file:///persistent/path/to/entry` (파이어 폭스, 인터넷 익스플로러)에서 경로 반환합니다. 크롬 양식 `cdvfile://***REMOVED***/persistent/file`에 경로 반환합니다..
+*   `toInternalURL` 양식 `file:///persistent/path/to/entry` (파이어 폭스, 인터넷 익스플로러)에서 경로 반환합니다. 크롬 양식 `cdvfile://localhost/persistent/file`에 경로 반환합니다..
 
  [4]: http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions
 
@@ -235,14 +235,14 @@ IOS 디바이스에 영구 파일을 저장할 두 개의 유효한 위치가 �
     window.addEventListener('filePluginIsReady', function(){ console.log('File plugin is ready');}, false);
     
 
-`Window.isFilePluginReadyRaised` 함수를 사용 하 여 이벤트가 이미 발생 여부를 확인할 수 있습니다. -window.requestFileSystem 임시 및 영구 파일 시스템 할당량 크롬에 제한 되지 않습니다. -크롬에서 영구 저장소를 증가 하려면 `window.initPersistentFileSystem` 메서드를 호출 해야 합니다. 영구 저장소 할당량은 기본적으로 5 메가바이트입니다. -크롬 필요 `-허용-파일-액세스-에서-파일` `file:///` 프로토콜을 통해 지원 API 인수를 실행 합니다. -플래그를 사용 하면 `파일` 개체 하지 변경할 수 `{create:true}` 때 기존 `항목`. -행사 `cancelable` 속성이로 설정 된 크롬에서. 이 [사양][5] 대조적 이다. -크롬에서 `toURL` 함수 반환 합니다 `파일 시스템:`-응용 프로그램 호스트에 따라 경로 앞에. 예를 들어, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://***REMOVED***:8080/persistent/somefile.txt`. -`toURL` 함수 결과 디렉터리 항목의 경우에 후행 슬래시를 포함 하지 않습니다. 크롬 하지만 제대로 붙여 슬래시 url이 포함 된 디렉터리 해결합니다. -`resolveLocalFileSystemURL` 메서드 인바운드 `url`을 `파일 시스템` 접두사가 필요 합니다. 예를 들어, `url` 매개 변수 `resolveLocalFileSystemURL`에 대 한 안 드 로이드에서 양식 `file:///persistent/somefile.txt` 반대로 양식 `filesystem:file:///persistent/somefile.txt`에 있어야 합니다. -사용 되지 않는 `toNativeURL` 함수는 지원 되지 않습니다 및 stub에는 없습니다. -`setMetadata` 함수는 규격에 명시 되지 않은 및 지원 되지 않습니다. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 SYNTAX_ERR(code: 8) 비 existant 파일 시스템의 요청에. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 PATH_EXISTS_ERR(code: 12) 독점적으로 파일 또는 디렉터리를 만들 려,는 이미 존재 합니다. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 NO_MODIFICATION_ALLOWED_ERR(code: 6) 루트 파일 시스템에 removeRecursively을 호출 하려고 합니다. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 NOT_FOUND_ERR(code: 1) moveTo 디렉터리 존재 하지 않는 것을 시도에.
+`Window.isFilePluginReadyRaised` 함수를 사용 하 여 이벤트가 이미 발생 여부를 확인할 수 있습니다. -window.requestFileSystem 임시 및 영구 파일 시스템 할당량 크롬에 제한 되지 않습니다. -크롬에서 영구 저장소를 증가 하려면 `window.initPersistentFileSystem` 메서드를 호출 해야 합니다. 영구 저장소 할당량은 기본적으로 5 메가바이트입니다. -크롬 필요 `-허용-파일-액세스-에서-파일` `file:///` 프로토콜을 통해 지원 API 인수를 실행 합니다. -플래그를 사용 하면 `파일` 개체 하지 변경할 수 `{create:true}` 때 기존 `항목`. -행사 `cancelable` 속성이로 설정 된 크롬에서. 이 [사양][5] 대조적 이다. -크롬에서 `toURL` 함수 반환 합니다 `파일 시스템:`-응용 프로그램 호스트에 따라 경로 앞에. 예를 들어, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://localhost:8080/persistent/somefile.txt`. -`toURL` 함수 결과 디렉터리 항목의 경우에 후행 슬래시를 포함 하지 않습니다. 크롬 하지만 제대로 붙여 슬래시 url이 포함 된 디렉터리 해결합니다. -`resolveLocalFileSystemURL` 메서드 인바운드 `url`을 `파일 시스템` 접두사가 필요 합니다. 예를 들어, `url` 매개 변수 `resolveLocalFileSystemURL`에 대 한 안 드 로이드에서 양식 `file:///persistent/somefile.txt` 반대로 양식 `filesystem:file:///persistent/somefile.txt`에 있어야 합니다. -사용 되지 않는 `toNativeURL` 함수는 지원 되지 않습니다 및 stub에는 없습니다. -`setMetadata` 함수는 규격에 명시 되지 않은 및 지원 되지 않습니다. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 SYNTAX_ERR(code: 8) 비 existant 파일 시스템의 요청에. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 PATH_EXISTS_ERR(code: 12) 독점적으로 파일 또는 디렉터리를 만들 려,는 이미 존재 합니다. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 NO_MODIFICATION_ALLOWED_ERR(code: 6) 루트 파일 시스템에 removeRecursively을 호출 하려고 합니다. -INVALID_MODIFICATION_ERR (코드: 9) 대신 throw 됩니다 NOT_FOUND_ERR(code: 1) moveTo 디렉터리 존재 하지 않는 것을 시도에.
 
  [5]: http://dev.w3.org/2009/dap/file-system/file-writer.html
 
 ### IndexedDB 기반 구현이 특수 (파이어 폭스와 IE)
 
 *   `.` `.`는 지원 되지 않습니다.
-*   IE `file:///`를 지원 하지 않습니다-모드; 호스트 모드 지원된 (http://***REMOVED***:xxxx)입니다.
+*   IE `file:///`를 지원 하지 않습니다-모드; 호스트 모드 지원된 (http://localhost:xxxx)입니다.
 *   파이어 폭스 파일 시스템 크기 제한 이지만 각 50MB 확장 사용자 권한을 요청 합니다. IE10 최대 10 mb 결합 AppCache 및 IndexedDB 묻는 사이트 당 250 mb의 최대 최대 증가 될 수 있도록 하려는 경우 해당 수준에 충돌 한 번 메시지를 표시 하지 않고 파일 시스템의 구현에 사용을 허용 한다. 그래서 `size` 매개 변수 `requestFileSystem` 함수에 대 한 파이어 폭스와 IE에서 파일 시스템 영향을 주지 않습니다.
 *   `readAsBinaryString` 함수 사양에 명시 되지 않은 IE에서 지원 되지 않으며 stub에는 없습니다.
 *   `file.type`은 항상 null입니다.
@@ -284,7 +284,7 @@ V1.0.0, `fullPath` 속성은 *HTML 파일 시스템의 루트에 상대적인* �
 
 V1.1.0에 `toURL()`의 반환 값 (\[CB-6394\] (https://issues.apache.org/jira/browse/CB-6394) 참조)로 바뀌었다 'file://' 절대 URL을 반환. 가능 하다 면. 보장 하는 ' cdvfile:'-URL `toInternalURL()`를 지금 사용할 수 있습니다. 이 메서드 이제 양식의 파일 Url을 반환 합니다.
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 어떤 파일을 고유 하 게 식별 하려면 사용할 수 있습니다.

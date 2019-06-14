@@ -92,7 +92,7 @@ El `FileTransfer` objeto proporciona una manera de subir archivos mediante una s
 
 ### Ejemplo
 
-    // !! Asume fileURL variable contiene una dirección URL válida a un archivo de texto en el dispositivo, / / por ejemplo, ganar var cdvfile://***REMOVED***/persistent/path/to/file.txt = function (r) {console.log ("código =" + r.responseCode);
+    // !! Asume fileURL variable contiene una dirección URL válida a un archivo de texto en el dispositivo, / / por ejemplo, ganar var cdvfile://localhost/persistent/path/to/file.txt = function (r) {console.log ("código =" + r.responseCode);
         Console.log ("respuesta =" + r.response);
         Console.log ("Sent =" + r.bytesSent);}
     
@@ -182,7 +182,7 @@ A `FileUploadResult` objeto se pasa a la devolución del éxito de la `FileTrans
 
 ### Ejemplo
 
-    // !! Asume fileURL variable contiene una dirección URL válida a un camino en el dispositivo, / / por ejemplo, File Transfer var cdvfile://***REMOVED***/persistent/path/to/downloads/ = new FileTransfer();
+    // !! Asume fileURL variable contiene una dirección URL válida a un camino en el dispositivo, / / por ejemplo, File Transfer var cdvfile://localhost/persistent/path/to/downloads/ = new FileTransfer();
     var uri = encodeURI ("http://some.server.com/download.php");
     
     fileTransfer.download (uri, fileURL, function(entry) {console.log ("descarga completa:" + entry.toURL());
@@ -198,7 +198,7 @@ Aborta a una transferencia en curso. El callback onerror se pasa un objeto FileT
 
 ### Ejemplo
 
-    // !! Asume fileURL variable contiene una dirección URL válida a un archivo de texto en el dispositivo, / / por ejemplo, ganar cdvfile://***REMOVED***/persistent/path/to/file.txt var function(r) = {console.log ("no se debe llamar.");}
+    // !! Asume fileURL variable contiene una dirección URL válida a un archivo de texto en el dispositivo, / / por ejemplo, ganar cdvfile://localhost/persistent/path/to/file.txt var function(r) = {console.log ("no se debe llamar.");}
     
     var fallar = function(error) {/ / error.code == FileTransferError.ABORT_ERR alert ("ha ocurrido un error: código =" + error.code);
         Console.log ("error al cargar el origen" + error.source);
@@ -256,7 +256,7 @@ Si va a actualizar a una nueva (1.0.0 o más reciente) versión del archivo y pr
 
 `FileEntry.toURL()`y `DirectoryEntry.toURL()` devolver un filesystem dirección URL de la forma
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 que puede ser utilizado en lugar de la ruta del archivo absoluta tanto en `download()` y `upload()` los métodos.

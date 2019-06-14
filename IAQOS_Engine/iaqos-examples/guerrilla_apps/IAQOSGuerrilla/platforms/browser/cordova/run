@@ -46,7 +46,7 @@ function start(argv) {
 
     var server = cordovaServe();
     server.servePlatform('browser', {port: args.port, noServerInfo: true}).then(function () {
-        var projectUrl = url.resolve('http://***REMOVED***:' + server.port + '/', sourceFile ? sourceFile[1] : 'index.html');
+        var projectUrl = url.resolve('http://localhost:' + server.port + '/', sourceFile ? sourceFile[1] : 'index.html');
         console.log('Static file server running @ ' + projectUrl + '\nCTRL + C to shut down');
         return cordovaServe.launchBrowser({target: args.target, url: projectUrl});
     }).catch(function (error) {

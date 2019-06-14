@@ -60,12 +60,12 @@
     var nativeResolveLocalFileSystemURL = window.resolveLocalFileSystemURL || window.webkitResolveLocalFileSystemURL;
     window.resolveLocalFileSystemURL = function (url, win, fail) {
         /* If url starts with `cdvfile` then we need convert it to Chrome real url first:
-          cdvfile://***REMOVED***/persistent/path/to/file -> filesystem:file://persistent/path/to/file */
+          cdvfile://localhost/persistent/path/to/file -> filesystem:file://persistent/path/to/file */
         if (url.trim().substr(0, 7) === 'cdvfile') {
             /* Quirk:
-            Plugin supports cdvfile://***REMOVED*** (local resources) only.
+            Plugin supports cdvfile://localhost (local resources) only.
             I.e. external resources are not supported via cdvfile. */
-            if (url.indexOf('cdvfile://***REMOVED***') !== -1) {
+            if (url.indexOf('cdvfile://localhost') !== -1) {
                 // Browser supports temporary and persistent only
                 var indexPersistent = url.indexOf('persistent');
                 var indexTemporary = url.indexOf('temporary');
@@ -73,7 +73,7 @@
                 /* Chrome urls start with 'filesystem:' prefix. See quirk:
                    toURL function in Chrome returns filesystem:-prefixed path depending on application host.
                    For example, filesystem:file:///persistent/somefile.txt,
-                   filesystem:http://***REMOVED***:8080/persistent/somefile.txt. */
+                   filesystem:http://localhost:8080/persistent/somefile.txt. */
                 var prefix = 'filesystem:file:///';
                 if (location.protocol !== 'file:') { // eslint-disable-line no-undef
                     prefix = 'filesystem:' + location.origin + '/'; // eslint-disable-line no-undef
@@ -81,16 +81,16 @@
 
                 var result;
                 if (indexPersistent !== -1) {
-                    // cdvfile://***REMOVED***/persistent/path/to/file -> filesystem:file://persistent/path/to/file
-                    // or filesystem:http://***REMOVED***:8080/persistent/path/to/file
+                    // cdvfile://localhost/persistent/path/to/file -> filesystem:file://persistent/path/to/file
+                    // or filesystem:http://localhost:8080/persistent/path/to/file
                     result = prefix + 'persistent' + url.substr(indexPersistent + 10);
                     nativeResolveLocalFileSystemURL(result, win, fail);
                     return;
                 }
 
                 if (indexTemporary !== -1) {
-                    // cdvfile://***REMOVED***/temporary/path/to/file -> filesystem:file://temporary/path/to/file
-                    // or filesystem:http://***REMOVED***:8080/temporary/path/to/file
+                    // cdvfile://localhost/temporary/path/to/file -> filesystem:file://temporary/path/to/file
+                    // or filesystem:http://localhost:8080/temporary/path/to/file
                     result = prefix + 'temporary' + url.substr(indexTemporary + 9);
                     nativeResolveLocalFileSystemURL(result, win, fail);
                     return;
@@ -128,11 +128,11 @@
 
             entryType.toInternalURL = function () {
                 if (this.toURL().indexOf('persistent') > -1) {
-                    return 'cdvfile://***REMOVED***/persistent' + this.fullPath;
+                    return 'cdvfile://localhost/persistent' + this.fullPath;
                 }
 
                 if (this.toURL().indexOf('temporary') > -1) {
-                    return 'cdvfile://***REMOVED***/temporary' + this.fullPath;
+                    return 'cdvfile://localhost/temporary' + this.fullPath;
                 }
             };
 

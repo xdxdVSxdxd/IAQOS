@@ -221,7 +221,7 @@
 *   每個瀏覽器使用其自己的沙箱檔案系統。IE 和火狐瀏覽器使用 IndexedDB 作為一個基地。所有瀏覽器都使用正斜杠作為路徑中的目錄分隔符號。
 *   目錄條目不得不先後創建。 例如，調用 `fs.root.getDirectory (' dir1/dir2 '，{create:true}，successCallback，errorCallback）`，如果不存在 dir1 將失敗。
 *   外掛程式將請求使用者許可權，以便在應用程式初次開機使用持久性存儲。 
-*   外掛程式支援 `cdvfile://***REMOVED***` （本地資源） 只。通過 `cdvfile` 不支援外部資源即.
+*   外掛程式支援 `cdvfile://localhost` （本地資源） 只。通過 `cdvfile` 不支援外部資源即.
 *   該外掛程式不遵循 ["檔案系統 API 8.3 命名限制"][8].
 *   Blob 和檔 ' `close` 功能不受支援。
 *   `FileSaver` 和 `BlobBuilder` 不支援這個外掛程式，沒有存根 (stub)。
@@ -230,7 +230,7 @@
 *   不支援通過建構函式創建的檔。你應該使用 entry.file 方法。
 *   每個瀏覽器使用它自己的形式為 blob 的 URL 引用。
 *   支援 `readAsDataURL` 功能，但在 Chrome 中的媒體類型取決於輸入副檔名，在 IE 中的媒體類型都始終空著 （這是 `純文字` 按照說明書一樣），在 Firefox 中的媒體類型始終是 `應用程式/八位位元組流`。 例如，如果內容是 `abcdefg` 然後火狐瀏覽器返回 `資料： 應用程式 / 八位位元組流 ； base64，YWJjZGVmZw = =`，即返回 `資料： ； base64，YWJjZGVmZw = =`，鉻返回 `資料： < 媒體類型根據擴展條目名稱 > ； base64，YWJjZGVmZw = =`.
-*   在表單 `file:///persistent/path/to/entry` 火狐瀏覽器 IE），`toInternalURL` 返回的路徑。 鉻在表單 `cdvfile://***REMOVED***/persistent/file` 返回的路徑.
+*   在表單 `file:///persistent/path/to/entry` 火狐瀏覽器 IE），`toInternalURL` 返回的路徑。 鉻在表單 `cdvfile://localhost/persistent/file` 返回的路徑.
 
  [8]: http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions
 
@@ -242,12 +242,12 @@
     window.addEventListener('filePluginIsReady', function(){ console.log('File plugin is ready');}, false);
     
 
-你可以使用 `window.isFilePluginReadyRaised` 函數來檢查是否已經引發了事件。 -window.requestFileSystem 臨時和永久性檔案系統配額並不局限于鉻。 為增加中鉻的持久性存儲，您需要調用 `window.initPersistentFileSystem` 方法。 預設情況下，持久性存儲配額為 5 MB。 鉻需要 `— — 允許--訪問-從-檔` 通過 `file:///` 協定運行參數對 API 的支援。 -如果您使用標誌，將不更改 `檔` 物件 `{create:true}` 現有 `條目` 的時候。 -事件 `可取消` 屬性設置為 true 在 Chrome 中。 這是違反了 [規範][4]。 -中鉻的 `toURL` 函數返回 `檔案系統：`-首碼路徑具體取決於應用程式主機。 例如，`filesystem:file:///persistent/somefile.txt`，`filesystem:HTTP://***REMOVED***:8080/persistent/somefile.txt`。 -`toURL` 函數結果不包含尾部反斜線在目錄條目的情況下。 鉻雖然正確解析目錄帶斜杠落後的 url。 -`resolveLocalFileSystemURL` 方法需要入站的 `url` 必須具有 `檔案系統` 首碼。 例如，`resolveLocalFileSystemURL` 的 `url` 參數應在表單 `filesystem:file:///persistent/somefile.txt` 而不是表單 `file:///persistent/somefile.txt` 在安卓系統。 -不推薦使用 `toNativeURL` 函數不受支援，並且沒有存根 (stub)。 -`setMetadata` 功能是沒有說出的規格，並且不支援。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 SYNTAX_ERR(code: 8) 上請求一個不存在的檔案系統。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 PATH_EXISTS_ERR(code: 12) 上嘗試專門創建一個檔或目錄，它已經存在。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 NO_MODIFICATION_ALLOWED_ERR(code: 6) 在試圖調用 removeRecursively 的根檔案系統上。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 NOT_FOUND_ERR(code: 1) 試到 moveTo 目錄不存在。
+你可以使用 `window.isFilePluginReadyRaised` 函數來檢查是否已經引發了事件。 -window.requestFileSystem 臨時和永久性檔案系統配額並不局限于鉻。 為增加中鉻的持久性存儲，您需要調用 `window.initPersistentFileSystem` 方法。 預設情況下，持久性存儲配額為 5 MB。 鉻需要 `— — 允許--訪問-從-檔` 通過 `file:///` 協定運行參數對 API 的支援。 -如果您使用標誌，將不更改 `檔` 物件 `{create:true}` 現有 `條目` 的時候。 -事件 `可取消` 屬性設置為 true 在 Chrome 中。 這是違反了 [規範][4]。 -中鉻的 `toURL` 函數返回 `檔案系統：`-首碼路徑具體取決於應用程式主機。 例如，`filesystem:file:///persistent/somefile.txt`，`filesystem:HTTP://localhost:8080/persistent/somefile.txt`。 -`toURL` 函數結果不包含尾部反斜線在目錄條目的情況下。 鉻雖然正確解析目錄帶斜杠落後的 url。 -`resolveLocalFileSystemURL` 方法需要入站的 `url` 必須具有 `檔案系統` 首碼。 例如，`resolveLocalFileSystemURL` 的 `url` 參數應在表單 `filesystem:file:///persistent/somefile.txt` 而不是表單 `file:///persistent/somefile.txt` 在安卓系統。 -不推薦使用 `toNativeURL` 函數不受支援，並且沒有存根 (stub)。 -`setMetadata` 功能是沒有說出的規格，並且不支援。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 SYNTAX_ERR(code: 8) 上請求一個不存在的檔案系統。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 PATH_EXISTS_ERR(code: 12) 上嘗試專門創建一個檔或目錄，它已經存在。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 NO_MODIFICATION_ALLOWED_ERR(code: 6) 在試圖調用 removeRecursively 的根檔案系統上。 -INVALID_MODIFICATION_ERR (代碼: 9） 而不是引發 NOT_FOUND_ERR(code: 1) 試到 moveTo 目錄不存在。
 
 ### 基於 IndexedDB 的 impl 怪癖 （Firefox 和 IE）
 
 *   `.` 和 `.` 不受支援。
-*   IE 不支援 `file:///`-模式 ；只有託管的模式是支援 （HTTP://***REMOVED***:xxxx）。
+*   IE 不支援 `file:///`-模式 ；只有託管的模式是支援 （HTTP://localhost:xxxx）。
 *   火狐瀏覽器的檔案系統大小不是有限，但每個 50 MB 擴展會要求使用者的許可權。 IE10 允許達 10 mb 的 AppCache 和 IndexedDB 檔案系統的實現中使用而不會提示，一旦你達到這一水準你會詢問您是否允許它增加到每個網站的 250 mb 的最大合併。 所以 `requestFileSystem` 函數的 `大小` 參數並不影響檔案系統相容 Firefox 和 IE。
 *   `readAsBinaryString` 函數在規範中沒有注明不支援在 IE 中和沒有存根 (stub)。
 *   `file.type` 始終為 null。
@@ -289,7 +289,7 @@
 
 在 v1.1.0 `toURL()` 的傳回值被更改 （見 [CB-6394] （HTTPs://issues.apache.org/jira/browse/CB-6394）） 為返回絕對 file:// URL。 只要有可能。 確保 'cdvfile：' — — 你現在可以用 `toInternalURL()` 的 URL。 現在，此方法將返回檔案系統表單的 Url
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 它可以用於唯一地標識該檔。

@@ -85,7 +85,7 @@
 ### Пример
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -189,7 +189,7 @@
 ### Пример
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -221,7 +221,7 @@
 ### Пример
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -284,7 +284,7 @@ A `FileTransferError` при ошибке обратного вызова пер
 
 `FileEntry.toURL()`и `DirectoryEntry.toURL()` возвращает URL-адрес формы файловой системы
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 которые могут быть использованы вместо абсолютного пути в обоих `download()` и `upload()` методы.

@@ -95,7 +95,7 @@
 ### 示例
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -199,7 +199,7 @@
 ### 示例
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -231,7 +231,7 @@
 ### 示例
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -296,7 +296,7 @@
 
 `FileEntry.toURL()` 和 `DirectoryEntry.toURL()` 返回的表單檔案 URL
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 它可以用在 `download()` 和 `upload()` 兩種方法中的絕對檔路徑位置。

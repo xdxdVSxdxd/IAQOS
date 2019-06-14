@@ -532,7 +532,7 @@ cordova.define("cordova-plugin-file.browserFileProxy", function(require, exports
 
             // support for cdvfile
             if (path.trim().substr(0, 7) === 'cdvfile') {
-                if (path.indexOf('cdvfile://***REMOVED***') === -1) {
+                if (path.indexOf('cdvfile://localhost') === -1) {
                     if (errorCallback) {
                         errorCallback(FileError.ENCODING_ERR);
                     }
@@ -542,7 +542,7 @@ cordova.define("cordova-plugin-file.browserFileProxy", function(require, exports
                 var indexPersistent = path.indexOf('persistent');
                 var indexTemporary = path.indexOf('temporary');
 
-                // cdvfile://***REMOVED***/persistent/path/to/file
+                // cdvfile://localhost/persistent/path/to/file
                 if (indexPersistent !== -1) {
                     path = 'file:///persistent' + path.substr(indexPersistent + 10);
                 } else if (indexTemporary !== -1) {
@@ -567,9 +567,9 @@ cordova.define("cordova-plugin-file.browserFileProxy", function(require, exports
                 return path.substr(cutIndex);
             }
 
-            // Handle ***REMOVED*** containing paths (see specs )
-            if (path.indexOf('file://***REMOVED***/') === 0) {
-                path = path.replace('file://***REMOVED***/', 'file:///');
+            // Handle localhost containing paths (see specs )
+            if (path.indexOf('file://localhost/') === 0) {
+                path = path.replace('file://localhost/', 'file:///');
             }
 
             if (path.indexOf(pathsPrefix.dataDirectory) === 0) {

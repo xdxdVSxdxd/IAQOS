@@ -195,7 +195,7 @@ Entry.prototype.toURL = function () {
     }
     // fullPath attribute may contain the full URL in the case that
     // toInternalURL fails.
-    return this.toInternalURL() || 'file://***REMOVED***' + this.fullPath;
+    return this.toInternalURL() || 'file://localhost' + this.fullPath;
 };
 
 /**

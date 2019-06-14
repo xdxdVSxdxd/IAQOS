@@ -311,8 +311,8 @@ exec(win, fail, 'FileTransfer', 'upload',
             filePath = filePath.replace('ms-appdata:///local', appData.localFolder.path)
                                .replace('ms-appdata:///temp', appData.temporaryFolder.path);
         } else if (filePath.indexOf('cdvfile://') === 0) {
-            filePath = filePath.replace('cdvfile://***REMOVED***/persistent', appData.localFolder.path)
-                               .replace('cdvfile://***REMOVED***/temporary', appData.temporaryFolder.path);
+            filePath = filePath.replace('cdvfile://localhost/persistent', appData.localFolder.path)
+                               .replace('cdvfile://localhost/temporary', appData.temporaryFolder.path);
         }
 
         // normalize path separators
@@ -412,8 +412,8 @@ exec(win, fail, 'FileTransfer', 'upload',
             target = target.replace('ms-appdata:///local', appData.localFolder.path)
                            .replace('ms-appdata:///temp', appData.temporaryFolder.path);
         } else if (target.indexOf('cdvfile://') === 0) {
-            target = target.replace('cdvfile://***REMOVED***/persistent', appData.localFolder.path)
-                           .replace('cdvfile://***REMOVED***/temporary', appData.temporaryFolder.path);
+            target = target.replace('cdvfile://localhost/persistent', appData.localFolder.path)
+                           .replace('cdvfile://localhost/temporary', appData.temporaryFolder.path);
         }
         target = cordovaPathToNative(target);
 

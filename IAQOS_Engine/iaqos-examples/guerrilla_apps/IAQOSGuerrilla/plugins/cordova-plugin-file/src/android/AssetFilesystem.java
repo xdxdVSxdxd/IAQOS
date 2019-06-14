@@ -163,7 +163,7 @@ public class AssetFilesystem extends Filesystem {
         }
         Uri.Builder b = new Uri.Builder()
             .scheme(LocalFilesystemURL.FILESYSTEM_PROTOCOL)
-            .authority("***REMOVED***")
+            .authority("localhost")
             .path(name);
         if (!subPath.isEmpty()) {
             b.appendEncodedPath(subPath);

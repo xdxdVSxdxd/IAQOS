@@ -95,7 +95,7 @@ __Parameters__:
 ### Example
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
 
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -205,7 +205,7 @@ __Parameters__:
 ### Example
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
 
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -244,7 +244,7 @@ Aborts an in-progress transfer. The onerror callback is passed a FileTransferErr
 ### Example
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
 
     var win = function(r) {
         console.log("Should not be called.");
@@ -312,6 +312,6 @@ If you are upgrading to a new (1.0.0 or newer) version of File, and you have pre
 
 `FileEntry.toURL()` and `DirectoryEntry.toURL()` return a filesystem URL of the form:
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
 
 which can be used in place of the absolute file path in both `download()` and `upload()` methods.

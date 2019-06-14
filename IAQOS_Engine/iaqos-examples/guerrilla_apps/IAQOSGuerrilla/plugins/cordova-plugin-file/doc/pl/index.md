@@ -214,7 +214,7 @@ Obsługiwane są następujące ścieżki danych: * `applicationDirectory` - uży
 *   Każda przeglądarka używa własnej piaskownicy plików. IE i Firefox Użyj IndexedDB jako podstawa. Wszystkie przeglądarki za pomocą ukośnika jako separatora katalogu ścieżka.
 *   Wpisy w katalogu mają być tworzone sukcesywnie. Na przykład wywołanie `fs.root.getDirectory (' dir1/dir2 ', {create:true}, successCallback, errorCallback)` zakończy się niepowodzeniem, jeśli nie istnieje dir1.
 *   Plugin żądania użytkownika uprawnień do używania trwałe przechowywanie przy pierwszym uruchomieniu aplikacji. 
-*   Wtyczka obsługuje `cdvfile://***REMOVED***` (lokalne zasoby) tylko. Czyli zewnętrznych zasobów nie są obsługiwane przez `cdvfile`.
+*   Wtyczka obsługuje `cdvfile://localhost` (lokalne zasoby) tylko. Czyli zewnętrznych zasobów nie są obsługiwane przez `cdvfile`.
 *   Plugin nie następować po ["Plik API systemu nazw 8.3 ograniczenia"][4].
 *   Obiektu BLOB i pliku "`close` funkcja nie jest obsługiwana.
 *   `FileSaver` i `BlobBuilder` nie są obsługiwane przez ten plugin i nie ma artykułów.
@@ -223,7 +223,7 @@ Obsługiwane są następujące ścieżki danych: * `applicationDirectory` - uży
 *   Pliki utworzone za pomocą konstruktora nie są obsługiwane. Zamiast tego należy użyć metody entry.file.
 *   Każda przeglądarka używa własnej postaci URL odwołania blob.
 *   `readAsDataURL` funkcja jest obsługiwana, ale mediatype w Chrome zależy od wejścia z rozszerzeniem, mediatype w IE zawsze jest pusty (który jest taki sam jak `zwykły tekst` według specyfikacji), mediatype w Firefox jest zawsze `aplikacji/oktet strumień`. Na przykład, jeśli treść jest `abcdefg` Firefox wraca z `danych: stosowanie / octet-stream, base64, YWJjZGVmZw ==`, czyli zwraca `danych:; base64, YWJjZGVmZw ==`, Chrome zwraca `danych: < mediatype w zależności od rozszerzenia nazwy; > base64, YWJjZGVmZw ==`.
-*   `toInternalURL` zwraca ścieżkę w postaci `file:///persistent/path/to/entry` (Firefox, IE). Chrom zwraca ścieżkę w postaci `cdvfile://***REMOVED***/persistent/file`.
+*   `toInternalURL` zwraca ścieżkę w postaci `file:///persistent/path/to/entry` (Firefox, IE). Chrom zwraca ścieżkę w postaci `cdvfile://localhost/persistent/file`.
 
  [4]: http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions
 
@@ -235,14 +235,14 @@ Obsługiwane są następujące ścieżki danych: * `applicationDirectory` - uży
     window.addEventListener('filePluginIsReady', function(){ console.log('File plugin is ready');}, false);
     
 
-Funkcja `window.isFilePluginReadyRaised` służy do sprawdzenia, czy zdarzenie już została podniesiona. -kwoty plików tymczasowych i trwałe window.requestFileSystem nie są ograniczone w Chrome. -W celu zwiększenia trwałego magazynu w Chrome, należy wywołać metodę `window.initPersistentFileSystem`. Domyślnie trwałe dyskowa jest 5 MB. -Chrome wymaga `--pozwalają--dostęp z plików` uruchomić argument na poparcie API za pośrednictwem protokołu `file:///`. -`Plik` obiekt będzie nie zmieniło jeśli flaga `{create:true}` gdy już istniejący `wpis`. -wydarzenia `zwrotu` właściwość jest zestaw true w Chrome. Jest to sprzeczne ze [specyfikacji][5]. -Funkcja `toURL` w Chrome zwraca `plików:`-poprzedzona ścieżką w zależności od aplikacji hosta. Na przykład, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://***REMOVED***:8080/persistent/somefile.txt`. -wynik funkcji `toURL` nie zawierają ukośnika w wpis w katalogu. Chrom usuwa katalogi z ciąć doczepiane adresów URL poprawnie choć. -Metoda `resolveLocalFileSystemURL` wymaga przychodzących `url` mają prefiks `plików`. Na przykład parametr `adresu url` do `resolveLocalFileSystemURL` powinny być w formie `filesystem:file:///persistent/somefile.txt`, w przeciwieństwie do formularza `file:///persistent/somefile.txt` w Android. -Przestarzałe `toNativeURL` funkcja nie jest obsługiwana i nie tylko. -Funkcja `setMetadata` jest nie podane w specyfikacji i nie jest obsługiwane. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast SYNTAX_ERR(code: 8) na żądanie nieistniejącą plików. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast PATH_EXISTS_ERR(code: 12) próbuje stworzyć wyłącznie pliku lub katalogu, który już istnieje. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast NO_MODIFICATION_ALLOWED_ERR(code: 6) na próby wywołania removeRecursively w głównym systemie plików. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast NOT_FOUND_ERR(code: 1) na trudny do katalogu moveTo, który nie istnieje.
+Funkcja `window.isFilePluginReadyRaised` służy do sprawdzenia, czy zdarzenie już została podniesiona. -kwoty plików tymczasowych i trwałe window.requestFileSystem nie są ograniczone w Chrome. -W celu zwiększenia trwałego magazynu w Chrome, należy wywołać metodę `window.initPersistentFileSystem`. Domyślnie trwałe dyskowa jest 5 MB. -Chrome wymaga `--pozwalają--dostęp z plików` uruchomić argument na poparcie API za pośrednictwem protokołu `file:///`. -`Plik` obiekt będzie nie zmieniło jeśli flaga `{create:true}` gdy już istniejący `wpis`. -wydarzenia `zwrotu` właściwość jest zestaw true w Chrome. Jest to sprzeczne ze [specyfikacji][5]. -Funkcja `toURL` w Chrome zwraca `plików:`-poprzedzona ścieżką w zależności od aplikacji hosta. Na przykład, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://localhost:8080/persistent/somefile.txt`. -wynik funkcji `toURL` nie zawierają ukośnika w wpis w katalogu. Chrom usuwa katalogi z ciąć doczepiane adresów URL poprawnie choć. -Metoda `resolveLocalFileSystemURL` wymaga przychodzących `url` mają prefiks `plików`. Na przykład parametr `adresu url` do `resolveLocalFileSystemURL` powinny być w formie `filesystem:file:///persistent/somefile.txt`, w przeciwieństwie do formularza `file:///persistent/somefile.txt` w Android. -Przestarzałe `toNativeURL` funkcja nie jest obsługiwana i nie tylko. -Funkcja `setMetadata` jest nie podane w specyfikacji i nie jest obsługiwane. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast SYNTAX_ERR(code: 8) na żądanie nieistniejącą plików. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast PATH_EXISTS_ERR(code: 12) próbuje stworzyć wyłącznie pliku lub katalogu, który już istnieje. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast NO_MODIFICATION_ALLOWED_ERR(code: 6) na próby wywołania removeRecursively w głównym systemie plików. -INVALID_MODIFICATION_ERR (kod: 9) jest generowany zamiast NOT_FOUND_ERR(code: 1) na trudny do katalogu moveTo, który nie istnieje.
 
  [5]: http://dev.w3.org/2009/dap/file-system/file-writer.html
 
 ### Na bazie IndexedDB impl dziwactw (Firefox i IE)
 
 *   `.` i `.` nie są obsługiwane.
-*   IE obsługuje `file:///`-tryb; tylko obsługiwane tryb jest obsługiwany (http://***REMOVED***:xxxx).
+*   IE obsługuje `file:///`-tryb; tylko obsługiwane tryb jest obsługiwany (http://localhost:xxxx).
 *   Rozmiar plików Firefox nie jest ograniczona, ale każde rozszerzenie 50MB zwróci użytkownikowi uprawnienia. IE10 pozwala maksymalnie 10mb połączone "appcache" i IndexedDB używane w implementacji systemu plików bez monitowania, gdy trafisz na tym poziomie, które uzyskasz, jeśli chcesz mogła ona zostać zwiększony do max 250mb na stronie. Więc `rozmiar` parametru funkcja `requestFileSystem` nie wpływa na system plików Firefox i IE.
 *   `readAsBinaryString` funkcja nie jest określona w specyfikacji i nie obsługiwane w IE i nie tylko.
 *   `File.Type` ma zawsze wartość null.
@@ -284,7 +284,7 @@ To szczególnie został problem z pluginem transferu plików, które poprzednio 
 
 W v1.1.0 wartość zwracana przez `toURL()` został zmieniony (patrz \[CB-6394\] (https://issues.apache.org/jira/browse/CB-6394)) zwraca adres URL absolutnej "file://". wszędzie tam, gdzie jest to możliwe. Aby zapewnić ' cdvfile:'-URL można użyć `toInternalURL()` teraz. Ta metoda zwróci teraz adresy URL plików formularza
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 który służy do jednoznacznej identyfikacji pliku.

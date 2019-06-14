@@ -320,7 +320,7 @@ All browsers use forward slash as directory separator in a path.
 For example, the call `fs.root.getDirectory('dir1/dir2', {create:true}, successCallback, errorCallback)`
 will fail if dir1 did not exist.
 - The plugin requests user permission to use persistent storage at the application first start.
-- Plugin supports `cdvfile://***REMOVED***` (local resources) only. I.e. external resources are not supported via `cdvfile`.
+- Plugin supports `cdvfile://localhost` (local resources) only. I.e. external resources are not supported via `cdvfile`.
 - The plugin does not follow ["File System API 8.3 Naming restrictions"](http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions).
 - Blob and File' `close` function is not supported.
 - `FileSaver` and `BlobBuilder` are not supported by this plugin and don't have stubs.
@@ -334,7 +334,7 @@ the mediatype in Firefox is always `application/octet-stream`.
 For example, if the content is `abcdefg` then Firefox returns `data:application/octet-stream;base64,YWJjZGVmZw==`,
 IE returns `data:;base64,YWJjZGVmZw==`, Chrome returns `data:<mediatype depending on extension of entry name>;base64,YWJjZGVmZw==`.
 - `toInternalURL` returns the path in the form `file:///persistent/path/to/entry` (Firefox, IE).
-Chrome returns the path in the form `cdvfile://***REMOVED***/persistent/file`.
+Chrome returns the path in the form `cdvfile://localhost/persistent/file`.
 
 ### Chrome quirks
 - Chrome filesystem is not immediately ready after device ready event. As a workaround you can subscribe to `filePluginIsReady` event.
@@ -349,7 +349,7 @@ You can use `window.isFilePluginReadyRaised` function to check whether event was
 - `File` object will be not changed if you use flag `{create:true}` when getting an existing `Entry`.
 - events `cancelable` property is set to true in Chrome. This is contrary to the [specification](http://dev.w3.org/2009/dap/file-system/file-writer.html).
 - `toURL` function in Chrome returns `filesystem:`-prefixed path depending on application host.
-For example, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://***REMOVED***:8080/persistent/somefile.txt`.
+For example, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://localhost:8080/persistent/somefile.txt`.
 - `toURL` function result does not contain trailing slash in case of directory entry.
 Chrome resolves directories with slash-trailed urls correctly though.
 - `resolveLocalFileSystemURL` method requires the inbound `url` to have `filesystem` prefix. For example, `url` parameter for `resolveLocalFileSystemURL`
@@ -363,7 +363,7 @@ should be in the form `filesystem:file:///persistent/somefile.txt` as opposed to
 
 ### IndexedDB-based impl quirks (Firefox and IE)
 - `.` and `..` are not supported.
-- IE does not support `file:///`-mode; only hosted mode is supported (http://***REMOVED***:xxxx).
+- IE does not support `file:///`-mode; only hosted mode is supported (http://localhost:xxxx).
 - Firefox filesystem size is not limited but each 50MB extension will request a user permission.
 IE10 allows up to 10mb of combined AppCache and IndexedDB used in implementation of filesystem without prompting,
 once you hit that level you will be asked if you want to allow it to be increased up to a max of 250mb per site.
@@ -420,14 +420,14 @@ In v1.1.0 the return value of `toURL()` was changed (see [CB-6394](https://issue
 to return an absolute 'file://' URL. wherever possible. To ensure a 'cdvfile:'-URL you can use `toInternalURL()` now.
 This method will now return filesystem URLs of the form
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
 
 which can be used to identify the file uniquely.
 
 ## cdvfile protocol
 **Purpose**
 
-`cdvfile://***REMOVED***/persistent|temporary|another-fs-root*/path/to/file` can be used for platform-independent file paths.
+`cdvfile://localhost/persistent|temporary|another-fs-root*/path/to/file` can be used for platform-independent file paths.
 cdvfile paths are supported by core plugins - for example you can download an mp3 file to cdvfile-path via `cordova-plugin-file-transfer` and play it via `cordova-plugin-media`.
 
 __*Note__: See [Where to Store Files](#where-to-store-files), [File System Layouts](#file-system-layouts) and [Configuring the Plugin](#configuring-the-plugin-optional) for more details about available fs roots.
@@ -436,7 +436,7 @@ To use `cdvfile` as a tag' `src` you can convert it to native path via `toURL()`
 
 You can also use `cdvfile://` paths directly in the DOM, for example:
 ```HTML
-<img src="cdvfile://***REMOVED***/persistent/img/logo.png" />
+<img src="cdvfile://localhost/persistent/img/logo.png" />
 ```
 
 __Note__: This method requires following Content Security rules updates:
@@ -447,7 +447,7 @@ __Note__: This method requires following Content Security rules updates:
 **Converting cdvfile:// to native path**
 
 ```javascript
-resolveLocalFileSystemURL('cdvfile://***REMOVED***/temporary/path/to/file.mp4', function(entry) {
+resolveLocalFileSystemURL('cdvfile://localhost/temporary/path/to/file.mp4', function(entry) {
     var nativePath = entry.toURL();
     console.log('Native URI: ' + nativePath);
     document.getElementById('video').src = nativePath;
@@ -463,10 +463,10 @@ resolveLocalFileSystemURL(nativePath, function(entry) {
 **Using cdvfile in core plugins**
 
 ```javascript
-fileTransfer.download(uri, 'cdvfile://***REMOVED***/temporary/path/to/file.mp3', function (entry) { ...
+fileTransfer.download(uri, 'cdvfile://localhost/temporary/path/to/file.mp3', function (entry) { ...
 ```
 ```javascript
-var my_media = new Media('cdvfile://***REMOVED***/temporary/path/to/file.mp3', ...);
+var my_media = new Media('cdvfile://localhost/temporary/path/to/file.mp3', ...);
 my_media.play();
 ```
 

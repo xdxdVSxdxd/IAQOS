@@ -215,7 +215,7 @@ IOS デバイスに永続的なファイルを格納する 2 つの有効な場�
   * 各ブラウザーはサンド ボックス化されたファイルシステムを使用します。IE と Firefox IndexedDB をベースとして使用します。すべてのブラウザーは、パスにディレクトリの区切り記号としてスラッシュを使用します。
   * ディレクトリ エントリは連続して作成されなければなりません。 たとえば、コール `fs.root.getDirectory ('dir1 dir2'、{create:true}、successCallback、解り)` dir1 が存在しなかった場合は失敗します。
   * プラグインは、永続的なストレージ アプリケーションの最初の起動時に使用するユーザーのアクセス許可を要求します。 
-  * プラグインは、`cdvfile://***REMOVED***` (ローカル リソース) をサポートしているだけです。すなわち外部リソースは、`cdvfile` を介してサポートされていません.
+  * プラグインは、`cdvfile://localhost` (ローカル リソース) をサポートしているだけです。すなわち外部リソースは、`cdvfile` を介してサポートされていません.
   * プラグインに [制限」のファイル システム API の 8.3 命名規則](http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions) に従っていません。.
   * Blob およびファイル ' `close` 関数はサポートされていません。
   * `FileSaver` と `BlobBuilder` このプラグインでサポートされていないスタブを持っていません。
@@ -224,7 +224,7 @@ IOS デバイスに永続的なファイルを格納する 2 つの有効な場�
   * コンス トラクターで作成されたファイルはサポートされていません。代わりに entry.file メソッドを使用する必要があります。
   * 各ブラウザーは blob URL 参照の独自のフォームを使用します。
   * `readAsDataURL` 関数はサポートされてがクロムメッキで mediatype エントリ名の拡張子によって異なります、IE でメディアの種類は、常に空 （`text-plain` に従って、仕様と同じである）、Firefox でメディアの種類は常に `アプリケーションまたはオクテット-ストリーム`。 たとえば、コンテンツが場合 `abcdefg` し Firefox を返します `データ: アプリケーション/オクテット ストリーム、base64、YWJjZGVmZw = =`、すなわちを返します `データ:; base64、YWJjZGVmZw = =`、クロムを返します `データ: < エントリ名の拡張子によって mediatype >; base64、YWJjZGVmZw = =`.
-  * `toInternalURL` フォーム `file:///persistent/path/to/entry` （Firefox、IE） のパスを返します。 クロムの `cdvfile://***REMOVED***/persistent/file` フォームのパスを返します.
+  * `toInternalURL` フォーム `file:///persistent/path/to/entry` （Firefox、IE） のパスを返します。 クロムの `cdvfile://localhost/persistent/file` フォームのパスを返します.
 
 ### クロムの癖
 
@@ -234,12 +234,12 @@ IOS デバイスに永続的なファイルを格納する 2 つの有効な場�
 window.addEventListener('filePluginIsReady', function(){ console.log('File plugin is ready');}, false);
 ```
 
-`window.isFilePluginReadyRaised` 関数を使用して、イベントが既に発生したかどうかを確認できます。 -Chrome に window.requestFileSystem 一時と永続的なファイル ・ システムのクォータの制限はありません。 -クロム内の永続ストレージを増加する `window.initPersistentFileSystem` メソッドを呼び出す必要があります。 永続的な記憶域のクォータは、既定では 5 MB です。 クロムが必要です `--許可-ファイル-アクセス--ファイルから` `file:///` プロトコル経由でサポート API に引数を実行します。 -`ファイル` オブジェクト フラグを使用する場合ない変更されます `{create:true}` 既存の `エントリ` を取得するとき。 -イベント `cancelable` プロパティを設定するクロムの場合は true。 これは [仕様](http://dev.w3.org/2009/dap/file-system/file-writer.html) に反して。 -クロムメッキで `網` 関数を返します `ファイルシステム：`-アプリケーションのホストによってパスのプレフィックスします。 たとえば、`filesystem:file:///persistent/somefile.txt`、`filesystem:http://***REMOVED***:8080/persistent/somefile.txt`。 -`toURL` の関数の結果にはディレクトリ エントリ場合末尾にスラッシュが含まれていません。 クロムは、スラッシュ後塵 url を持つディレクトリが正しく解決されるも。 -`resolveLocalFileSystemURL` メソッドは、受信 `url` が `ファイルシステム` のプレフィックスが必要です。 たとえば、`resolveLocalFileSystemURL` の `url` パラメーター フォーム `filesystem:file:///persistent/somefile.txt` で人造人間フォーム `file:///persistent/somefile.txt` とは対照的にする必要があります。 -廃止された `toNativeURL` 関数はサポートされていません、スタブはありません。 -`setMetadata` 関数は、仕様に記載されていないありサポートされていません。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた SYNTAX_ERR(code: 8) の非実在しないファイルシステムの依頼を。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた PATH_EXISTS_ERR(code: 12)、排他的なファイルまたはディレクトリを作成しようとするが既に存在します。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた NO_MODIFICATION_ALLOWED_ERR(code: 6) ルート ・ ファイル ・ システムで removeRecursively を呼び出すをしようとして。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた NOT_FOUND_ERR(code: 1) [moveto] ディレクトリが存在しないをしようとして。
+`window.isFilePluginReadyRaised` 関数を使用して、イベントが既に発生したかどうかを確認できます。 -Chrome に window.requestFileSystem 一時と永続的なファイル ・ システムのクォータの制限はありません。 -クロム内の永続ストレージを増加する `window.initPersistentFileSystem` メソッドを呼び出す必要があります。 永続的な記憶域のクォータは、既定では 5 MB です。 クロムが必要です `--許可-ファイル-アクセス--ファイルから` `file:///` プロトコル経由でサポート API に引数を実行します。 -`ファイル` オブジェクト フラグを使用する場合ない変更されます `{create:true}` 既存の `エントリ` を取得するとき。 -イベント `cancelable` プロパティを設定するクロムの場合は true。 これは [仕様](http://dev.w3.org/2009/dap/file-system/file-writer.html) に反して。 -クロムメッキで `網` 関数を返します `ファイルシステム：`-アプリケーションのホストによってパスのプレフィックスします。 たとえば、`filesystem:file:///persistent/somefile.txt`、`filesystem:http://localhost:8080/persistent/somefile.txt`。 -`toURL` の関数の結果にはディレクトリ エントリ場合末尾にスラッシュが含まれていません。 クロムは、スラッシュ後塵 url を持つディレクトリが正しく解決されるも。 -`resolveLocalFileSystemURL` メソッドは、受信 `url` が `ファイルシステム` のプレフィックスが必要です。 たとえば、`resolveLocalFileSystemURL` の `url` パラメーター フォーム `filesystem:file:///persistent/somefile.txt` で人造人間フォーム `file:///persistent/somefile.txt` とは対照的にする必要があります。 -廃止された `toNativeURL` 関数はサポートされていません、スタブはありません。 -`setMetadata` 関数は、仕様に記載されていないありサポートされていません。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた SYNTAX_ERR(code: 8) の非実在しないファイルシステムの依頼を。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた PATH_EXISTS_ERR(code: 12)、排他的なファイルまたはディレクトリを作成しようとするが既に存在します。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた NO_MODIFICATION_ALLOWED_ERR(code: 6) ルート ・ ファイル ・ システムで removeRecursively を呼び出すをしようとして。 -INVALID_MODIFICATION_ERR （コード: 9) の代わりにスローされた NOT_FOUND_ERR(code: 1) [moveto] ディレクトリが存在しないをしようとして。
 
 ### IndexedDB ベース インプレ癖 （Firefox と IE）
 
   * `.` `です。` はサポートされていません。
-  * IE は `file:///` をサポートしていません-モード;ホスト モードのみがサポートされている (http://***REMOVED***:xxxx) です。
+  * IE は `file:///` をサポートしていません-モード;ホスト モードのみがサポートされている (http://localhost:xxxx) です。
   * Firefox のファイルシステムのサイズは無制限ですが各 50 MB の拡張機能がユーザーのアクセス許可を要求します。 IE10 は最大 10 mb の複合 AppCache と IndexedDB を求めず、サイトごとに 250 mb の最大値まで増加を許可するかどうかをたずねられますそのレベルに当ればファイルシステムの実装で使用することができます。 `RequestFileSystem` 関数の `size` パラメーターは、Firefox と IE のファイルシステムには影響しません。
   * `readAsBinaryString` 関数の仕様に記載されていない、IE でサポートされていないと、スタブを持っていません。
   * `file.type` は、常に null です。
@@ -281,7 +281,7 @@ writer.onprogress = function() { /*commands*/ };
 
 V1.1.0 の `toURL()` の戻り値に変更されました (\[CB-6394\] (https://issues.apache.org/jira/browse/CB-6394) を参照) を絶対 'file://' で始まる URL を返します。 可能な限り。 確保するために、' cdvfile:'-`toInternalURL()` を今すぐ使用できます URL。 このメソッドは、フォームのファイルシステムの Url を返します今
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 これはファイルを一意に識別するために使用できます。

@@ -24,6 +24,6 @@ FILESYSTEM_PROTOCOL = 'cdvfile';
 module.exports = {
     __format__: function (fullPath) {
         var path = ('/' + this.name + (fullPath[0] === '/' ? '' : '/') + FileSystem.encodeURIPath(fullPath)).replace('//', '/');
-        return FILESYSTEM_PROTOCOL + '://***REMOVED***' + path;
+        return FILESYSTEM_PROTOCOL + '://localhost' + path;
     }
 };

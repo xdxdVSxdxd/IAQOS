@@ -37,13 +37,13 @@ NSString* const kCDVAssetsLibraryScheme = @"assets-library";
  by iOS as
    asset-library://<path>
  and represents them internally as URLs of the form
-   cdvfile://***REMOVED***/assets-library/<path>
+   cdvfile://localhost/assets-library/<path>
  */
 
 - (NSURL *)assetLibraryURLForLocalURL:(CDVFilesystemURL *)url
 {
     if ([url.url.scheme isEqualToString:kCDVFilesystemURLPrefix]) {
-        NSString *path = [[url.url absoluteString] substringFromIndex:[@"cdvfile://***REMOVED***/assets-library" length]];
+        NSString *path = [[url.url absoluteString] substringFromIndex:[@"cdvfile://localhost/assets-library" length]];
         return [NSURL URLWithString:[NSString stringWithFormat:@"assets-library:/%@", path]];
     }
     return url.url;

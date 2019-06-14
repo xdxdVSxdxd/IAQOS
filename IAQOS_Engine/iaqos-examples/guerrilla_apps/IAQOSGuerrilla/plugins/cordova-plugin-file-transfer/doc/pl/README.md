@@ -100,7 +100,7 @@ Obiekt `FileTransfer` zapewnia sposób wgrać pliki za pomocą Multi-część PO
 ### Przykład
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -204,7 +204,7 @@ Obiekt `FileUploadResult` jest przekazywana do sukcesu wywołania zwrotnego meto
 ### Przykład
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -240,7 +240,7 @@ Przerywa w toku transferu. Onerror callback jest przekazywany obiekt FileTransfe
 ### Przykład
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -305,7 +305,7 @@ Jeśli uaktualniasz nowy (1.0.0 lub nowsza) wersja pliku i mieć wcześniej przy
 
 `FileEntry.toURL()` i `DirectoryEntry.toURL()` zwraca adres URL plików formularza
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 które mogą być używane zamiast bezwzględna ścieżka zarówno `download()` i `metody upload()` metody.

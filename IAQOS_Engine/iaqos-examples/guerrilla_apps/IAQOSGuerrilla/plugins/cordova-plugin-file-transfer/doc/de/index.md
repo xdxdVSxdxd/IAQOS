@@ -95,7 +95,7 @@ Das `FileTransfer`-Objekt bietet eine Möglichkeit zum Hochladen von Dateien, di
 ### Beispiel
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function (r) {
         console.log("Code = " + r.responseCode);
@@ -199,7 +199,7 @@ Ein `FileUploadResult`-Objekt wird an den Erfolg-Rückruf des `Objekts <code>Fil
 ### Beispiel
 
     // !! Assumes variable fileURL contains a valid URL to a path on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/downloads/
+    //    for example, cdvfile://localhost/persistent/path/to/downloads/
     
     var fileTransfer = new FileTransfer();
     var uri = encodeURI("http://some.server.com/download.php");
@@ -231,7 +231,7 @@ Bricht einen in-Progress-Transfer. Der Onerror-Rückruf wird ein FileTransferErr
 ### Beispiel
 
     // !! Assumes variable fileURL contains a valid URL to a text file on the device,
-    //    for example, cdvfile://***REMOVED***/persistent/path/to/file.txt
+    //    for example, cdvfile://localhost/persistent/path/to/file.txt
     
     var win = function(r) {
         console.log("Should not be called.");
@@ -296,7 +296,7 @@ Wenn Sie ein auf eine neue Upgrade (1.0.0 oder neuere) Version der Datei, und Si
 
 `FileEntry.toURL()` und `DirectoryEntry.toURL()` zurück, eine Dateisystem-URL in der form
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 die anstelle der absoluten Dateipfad in `download()` und `upload()` Methode verwendet werden kann.

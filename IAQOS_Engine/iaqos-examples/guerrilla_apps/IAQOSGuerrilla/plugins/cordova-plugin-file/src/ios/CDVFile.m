@@ -84,7 +84,7 @@ NSString* const kCDVFilesystemURLPrefix = @"cdvfile";
  */
 - (NSString *)filesystemNameForLocalURI:(NSURL *)uri
 {
-    if ([[uri scheme] isEqualToString:kCDVFilesystemURLPrefix] && [[uri host] isEqualToString:@"***REMOVED***"]) {
+    if ([[uri scheme] isEqualToString:kCDVFilesystemURLPrefix] && [[uri host] isEqualToString:@"localhost"]) {
         NSArray *pathComponents = [uri pathComponents];
         if (pathComponents != nil && pathComponents.count > 1) {
             return [pathComponents objectAtIndex:1];
@@ -104,7 +104,7 @@ NSString* const kCDVFilesystemURLPrefix = @"cdvfile";
  */
 - (NSString *)fullPathForLocalURI:(NSURL *)uri
 {
-    if ([[uri scheme] isEqualToString:kCDVFilesystemURLPrefix] && [[uri host] isEqualToString:@"***REMOVED***"]) {
+    if ([[uri scheme] isEqualToString:kCDVFilesystemURLPrefix] && [[uri host] isEqualToString:@"localhost"]) {
         NSString *path = [uri path];
         if ([uri query]) {
             path = [NSString stringWithFormat:@"%@?%@", path, [uri query]];
@@ -132,7 +132,7 @@ NSString* const kCDVFilesystemURLPrefix = @"cdvfile";
 
 - (NSString *)absoluteURL
 {
-    return [NSString stringWithFormat:@"cdvfile://***REMOVED***/%@%@", self.fileSystemName, self.fullPath];
+    return [NSString stringWithFormat:@"cdvfile://localhost/%@%@", self.fileSystemName, self.fullPath];
 }
 
 @end

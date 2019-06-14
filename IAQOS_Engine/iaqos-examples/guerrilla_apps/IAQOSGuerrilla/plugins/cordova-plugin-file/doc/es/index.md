@@ -212,7 +212,7 @@ Se admiten las siguientes rutas de datos: * `applicationDirectory` -usa `xhr` pa
 *   Cada navegador utiliza su propio sistema de ficheros un espacio aislado. IE y Firefox utilizan IndexedDB como base. Todos los navegadores utilizan diagonal como separador de directorio en un camino.
 *   Las entradas de directorio deben crearse sucesivamente. Por ejemplo, la llamada `fs.root.getDirectory (' dir1/dir2 ', {create:true}, successCallback, errorCallback)` se producirá un error si no existiera dir1.
 *   El plugin solicita permiso de usuario para usar almacenamiento persistente en el primer comienzo de la aplicación. 
-*   Plugin soporta `cdvfile://***REMOVED***` (recursos locales) solamente. Es decir, no se admiten los recursos externos vía `cdvfile`.
+*   Plugin soporta `cdvfile://localhost` (recursos locales) solamente. Es decir, no se admiten los recursos externos vía `cdvfile`.
 *   El plugin no sigue ["Archivo sistema API 8.3 nombrando restricciones"][4].
 *   BLOB y archivo ' `close` la función no es compatible.
 *   `FileSaver` y `BlobBuilder` no son compatibles con este plugin y no tengo recibos.
@@ -221,7 +221,7 @@ Se admiten las siguientes rutas de datos: * `applicationDirectory` -usa `xhr` pa
 *   No se admiten archivos creados mediante el constructor. Debe utilizar método entry.file en su lugar.
 *   Cada navegador utiliza su propia forma de blob URL referencias.
 *   se admite la función `readAsDataURL`, pero el mediatype en cromo depende de la extensión de nombre de entrada, mediatype en IE siempre está vacío (que es lo mismo como `plain-text` según la especificación), el mediatype en Firefox siempre es `application/octet-stream`. Por ejemplo, si el contenido es `abcdefg` entonces Firefox devuelve `datos: aplicación / octet-stream; base64, YWJjZGVmZw ==`, es decir devuelve `datos:; base64, YWJjZGVmZw ==`, cromo devuelve `datos: < mediatype dependiendo de la extensión de nombre de la entrada >; base64, YWJjZGVmZw ==`.
-*   `toInternalURL` devuelve la ruta de la forma `file:///persistent/path/to/entry` (Firefox, IE). Cromo devuelve la ruta de acceso en el formulario `cdvfile://***REMOVED***/persistent/file`.
+*   `toInternalURL` devuelve la ruta de la forma `file:///persistent/path/to/entry` (Firefox, IE). Cromo devuelve la ruta de acceso en el formulario `cdvfile://localhost/persistent/file`.
 
  [4]: http://www.w3.org/TR/2011/WD-file-system-api-20110419/#naming-restrictions
 
@@ -233,14 +233,14 @@ Se admiten las siguientes rutas de datos: * `applicationDirectory` -usa `xhr` pa
     window.addEventListener('filePluginIsReady', function(){ console.log('File plugin is ready');}, false);
     
 
-Puede utilizar la función `window.isFilePluginReadyRaised` para verificar si ya se provoca el evento. -window.requestFileSystem temporal y persistente filesystem cuotas no están limitadas en cromo. -Para aumentar el almacenamiento persistente en cromo necesitas llamar el método `window.initPersistentFileSystem`. Cuota de almacenamiento persistente es de 5 MB por defecto. -Chrome requiere `--permitir-archivo-acceso-de-archivos` ejecutar argumento al soporte API mediante protocolo `file:///`. -`Archivo` objeto no cambiará si utilizas bandera `{create:true}` cuando una `entrada` de existente. -eventos `cancelable` propiedad está establecida en true en cromo. Esto es contrario a la [Especificación][5]. -función de `toURL` en Chrome devuelve `filesystem:`-prefijo camino dependiendo de host de la aplicación. Por ejemplo, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://***REMOVED***:8080/persistent/somefile.txt`. -resultado de la función de `toURL` no contiene barra en caso de entrada en el directorio. Cromo resuelve directorios con urls slash-siguió correctamente sin embargo. -método `resolveLocalFileSystemURL` requiere la entrantes `url` que tienen prefijo `filesystem`. Por ejemplo, el parámetro de `url` para `resolveLocalFileSystemURL` debería estar en la forma `filesystem:file:///persistent/somefile.txt` en comparación con la forma `file:///persistent/somefile.txt` en Android. -Obsoleto `toNativeURL` función no es compatible y no tiene un trozo. -función de `setMetadata` no es indicada en las especificaciones y no admite. -INVALID_MODIFICATION_ERR (código: 9) se lanza en lugar de SYNTAX_ERR(code: 8) a petición de un sistema de ficheros inexistentes. -INVALID_MODIFICATION_ERR (código: 9) se lanza en vez de PATH_EXISTS_ERR(code: 12) en intentar exclusivamente crear un archivo o directorio, que ya existe. -INVALID_MODIFICATION_ERR (código: 9) se lanza en lugar de NO_MODIFICATION_ALLOWED_ERR(code: 6) para tratar de llamar a removeRecursively en el sistema de archivos raíz. -INVALID_MODIFICATION_ERR (código: 9) se lanza en vez de NOT_FOUND_ERR(code: 1) en tratar de moveTo directorio que no existe.
+Puede utilizar la función `window.isFilePluginReadyRaised` para verificar si ya se provoca el evento. -window.requestFileSystem temporal y persistente filesystem cuotas no están limitadas en cromo. -Para aumentar el almacenamiento persistente en cromo necesitas llamar el método `window.initPersistentFileSystem`. Cuota de almacenamiento persistente es de 5 MB por defecto. -Chrome requiere `--permitir-archivo-acceso-de-archivos` ejecutar argumento al soporte API mediante protocolo `file:///`. -`Archivo` objeto no cambiará si utilizas bandera `{create:true}` cuando una `entrada` de existente. -eventos `cancelable` propiedad está establecida en true en cromo. Esto es contrario a la [Especificación][5]. -función de `toURL` en Chrome devuelve `filesystem:`-prefijo camino dependiendo de host de la aplicación. Por ejemplo, `filesystem:file:///persistent/somefile.txt`, `filesystem:http://localhost:8080/persistent/somefile.txt`. -resultado de la función de `toURL` no contiene barra en caso de entrada en el directorio. Cromo resuelve directorios con urls slash-siguió correctamente sin embargo. -método `resolveLocalFileSystemURL` requiere la entrantes `url` que tienen prefijo `filesystem`. Por ejemplo, el parámetro de `url` para `resolveLocalFileSystemURL` debería estar en la forma `filesystem:file:///persistent/somefile.txt` en comparación con la forma `file:///persistent/somefile.txt` en Android. -Obsoleto `toNativeURL` función no es compatible y no tiene un trozo. -función de `setMetadata` no es indicada en las especificaciones y no admite. -INVALID_MODIFICATION_ERR (código: 9) se lanza en lugar de SYNTAX_ERR(code: 8) a petición de un sistema de ficheros inexistentes. -INVALID_MODIFICATION_ERR (código: 9) se lanza en vez de PATH_EXISTS_ERR(code: 12) en intentar exclusivamente crear un archivo o directorio, que ya existe. -INVALID_MODIFICATION_ERR (código: 9) se lanza en lugar de NO_MODIFICATION_ALLOWED_ERR(code: 6) para tratar de llamar a removeRecursively en el sistema de archivos raíz. -INVALID_MODIFICATION_ERR (código: 9) se lanza en vez de NOT_FOUND_ERR(code: 1) en tratar de moveTo directorio que no existe.
 
  [5]: http://dev.w3.org/2009/dap/file-system/file-writer.html
 
 ### Impl base IndexedDB rarezas (IE y Firefox)
 
 *   `.` y `..` no son compatibles.
-*   IE no soporta `file:///`-modo; modo alojado sólo es compatible (http://***REMOVED***:xxxx).
+*   IE no soporta `file:///`-modo; modo alojado sólo es compatible (http://localhost:xxxx).
 *   Tamaño del sistema de archivos de Firefox no es limitada pero cada extensión de 50 MB solicitará un permiso de usuario. IE10 permite hasta 10mb de combinados AppCache y IndexedDB utilizados en la implementación del sistema de ficheros sin preguntar, cuando llegas a ese nivel que se le preguntará si desea permitir que ser aumentada hasta un máximo de 250 mb por sitio. Para que `size` parámetro para la función `requestFileSystem` no afecta sistema de ficheros en Firefox y IE.
 *   la función `readAsBinaryString` no se indica en las especificaciones y no compatible con IE y no tiene un trozo.
 *   `file.type` siempre es null.
@@ -282,7 +282,7 @@ Esto ha sido particularmente un problema con el plugin de transferencia de archi
 
 En v1.1.0 el valor devuelto por `toURL()` fue cambiado (consulte \[CB-6394\] (https://issues.apache.org/jira/browse/CB-6394)) para devolver una dirección URL absoluta 'file://'. siempre que sea posible. Para asegurar una ' cdvfile:'-URL ahora puede utilizar `toInternalURL()`. Este método devolverá ahora filesystem URLs de la forma
 
-    cdvfile://***REMOVED***/persistent/path/to/file
+    cdvfile://localhost/persistent/path/to/file
     
 
 que puede utilizarse para identificar el archivo únicamente.

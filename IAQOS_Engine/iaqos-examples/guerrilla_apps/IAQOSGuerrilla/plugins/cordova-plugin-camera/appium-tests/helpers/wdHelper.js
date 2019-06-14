@@ -27,7 +27,7 @@ var driver;
 
 module.exports.getDriver = function (platform, callback) {
     var serverConfig = {
-        host: '***REMOVED***',
+        host: 'localhost',
         port: 4723
     },
         driverConfig = {
