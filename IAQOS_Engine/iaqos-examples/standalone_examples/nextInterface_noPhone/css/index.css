@@ -1,0 +1,84 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: #FFFFFF;
+	color: #000000;
+	font: 22px 'Work Sans','Helvetica Neue', sans-serif;
+	font-weight: 100;
+	overflow: hidden;
+}
+
+
+#offmodediv{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: #000000;
+	color: #00FF00;
+	font: 10px monospace;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	z-index: 9999;
+}
+
+#deactivator{
+	width: 200px;
+	height: 40px;
+	margin: 0px;
+	padding: 10px;
+	text-align: center;
+	background: #000000;
+	color: #00FF00;
+	font: 22px monospace;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	overflow: hidden;
+	z-index: 5000;
+}
+
+#deactivator:hover{
+	background: #00FF00;
+	color: #000000;
+}
+
+#textcontainer{
+	width: 65%;
+	padding: 30px;
+	margin: auto;
+	margin-top:100px;
+	margin-bottom:20px;
+	overflow: hidden;
+	font: 30px 'Work Sans','Helvetica Neue', sans-serif;
+	font-weight: 100;
+	text-align: center;
+	position: relative;
+	z-index: 400;
+}
+
+#activator{
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 99999;
+}
+
+#vizcontainer{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background: #FFFFFF;
+	overflow: hidden;
+}

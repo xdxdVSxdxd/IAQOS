@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>IAQOS engine examples: simple image upload</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8"> 
+
+</head>
+
+<body>
+	<h1>IAQOS engine examples: semplice upload di una immagine</h1>
+
+
+        <h1>Autenticazione</h1>
+
+        <p>Scrivi il tuo nome utente su IAQOS:</p>
+        <input type="text" id="name" name="name" />
+
+        <p>La tua password su IAQOS:</p>
+        <input type="password" id="pwd" name="pwd" />
+	
+        <hr />
+
+        <h2>1. Attivazione</h2>
+
+		<p>Seleziona qui sotto una azione da attivare in un dominio:</p>
+		<select id="action" name="action">
+                  
+        </select>
+
+        <p>Seleziona qui sotto un dominio in cui attivarla:</p>
+        <select id="domain" name="domain">
+                  
+        </select>
+
+        <p>Decidi una dimensione per il filtro di convoluzione iniziale (vale per le azioni di tipo <strong>gan-image</strong>, e determina anche la dimensione delle immagini elaborate dall'azione):</p>
+        <input type="text" name="filtersize" id="filtersize" value="48" /> ( <span id="dimension">204x204 pixels</span> )
+
+        <p>Immetti il valore per il <strong>Parametro 1:</strong> (vedi informazioni in basso per capire i parametri delle varie azioni):</p>
+        <input type="text" name="param1" id="param1" value="" />
+
+        <p>Immetti il valore per il <strong>Parametro 2:</strong> (vedi informazioni in basso per capire i parametri delle varie azioni):</p>
+        <input type="text" name="param2" id="param2" value="" />
+
+    	<p>Clicca quando vuoi impostare:</p>
+    	<input type="button" id="invia" name="invia" value="ATTIVA" />
+
+        <hr />
+
+        <h2>2. Deattivazione</h2>
+
+        <p>Seleziona qui sotto un dominio su cui vuoi disattivare una azione:</p>
+        <select id="domain2" name="domain2"></select>
+
+
+        <p>Clicca per disattivare:</p>
+        <input type="button" id="invia2" name="invia2" value="DISATTIVA" />
+
+        <hr />
+
+        <h2>3. Informazioni di configurazione</h2>
+
+        <p>Ecco le informazioni su come configurare le azioni dei diversi tip.</p>
+
+        <h5>Azioni di tipo gan_image</h5>
+        <p>General Adversarial Network: prende in ingresso i file immagine in un dominio e li usa per generare immagini nuove (es: in input ho immagini di cavalli, in output ho la possibilità di generare nuove immagini di cavalli artificiali, o di riconoscere quali immagini contengono un cavallo).</p>
+        <p><strong>Parametri</strong></p>
+        <ul>
+            <li><strong>Filtro di convoluzione</strong>: per questa azione si riempie questo campo invece degli altri due. Definendo un numero intero da 4 a 50 viene determinata anche la dimensione dell'immagine che può essere trattata.</li>    
+        </ul>
+
+
+        <h5>Azioni di tipo imagenet</h5>
+        <p>Classificazione tramite imagenet: per ogni immagine contenuta nel dominio si produce la classificazione secondo il progetto imagenet, attivo grazie a una vastissima comunità internazionale. Fondamentalmente si usa l'IA per dire cosa contengono le immagini, generando un output in formato JSON.</p>
+        <p><strong>Parametri</strong></p>
+        <ul>
+            <li><strong>Parametro 1</strong>: Riservato per usi futuri: non viene utilizzato.</li>    
+            <li><strong>Parametro 2</strong>: Mettere la dimensione a cui si vuole analizzare le immagini (più grandi vuol dire più memoria necessaria e più CPU).</li>    
+        </ul>
+
+
+        <h5>Azioni di tipo style_transfer</h5>
+        <p>Neural Style Transfer: si prende una immagine come ispirazione e ci si chiede se sia possibile trasferire il suo stile ad altre immagini. È possibile generare immagini come se le avesse dipinte Picasso, o Raffaello, o Andy Warhol? L'azione prende tutte le immagini nel dominio e le trasforma dandogli lo stile di una immagine di riferimento.</p>
+        <p><strong>Parametri</strong></p>
+        <ul>
+            <li><strong>Parametro 1</strong>: URL dell'immagine di cui si vuole copiare lo stile.</li>    
+            <li><strong>Parametro 2</strong>: Mettere la dimensione massima a cui si vuole analizzare le immagini (più grandi vuol dire più memoria necessaria e più CPU).</li>    
+        </ul>
+        
+
+	    <script src="../js/jquery.js"></script>
+	    <script src="index.js"></script>
+</body>
+</html>

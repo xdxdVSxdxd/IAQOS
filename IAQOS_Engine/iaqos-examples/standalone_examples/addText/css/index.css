@@ -1,0 +1,40 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: #FF8000;
+	color: #000000;
+	font: 22px 'Work Sans','Helvetica Neue', sans-serif;
+	font-weight: 100;
+}
+
+
+#container{
+	position: relative;
+	padding: 40px;
+	margin: 0px;
+	z-index: 100;
+}
+
+#txt{
+	background: #FFA020;
+	color: #000000;
+	font: 22px Helvetica,sans-serif;
+	border: 1px dashed #666666;
+	padding: 20px;
+}
+
+#trigger{
+	background: #000000;
+	color: #ffffff;
+	padding: 20px;
+	margin: 20px;
+	font: bold 24px Helvetica,sans-serif;
+	border: 0px;
+}
+
+#trigger:hover{
+	background: #FFFFFF;
+	color: #000000;
+}

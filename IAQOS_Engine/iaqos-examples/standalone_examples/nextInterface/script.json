@@ -1,0 +1,28 @@
+[
+	{
+		"action": "speak",
+		"what": "[Greeting]",
+		"delay": 1
+	},
+	{
+		"action": "speak",
+		"what": "[TellMe]",
+		"delay": 1
+	},
+	{
+		"action": "capture",
+		"waitfor": 5000,
+		"delay": 1
+	},
+	{
+		"action": "manageinput",
+		"waitfor": 5000,
+		"delay": 1
+	},
+	{
+		"action": "storeknowledge",
+		"waitfor": 5000,
+		"delay": 1
+	}
+
+]

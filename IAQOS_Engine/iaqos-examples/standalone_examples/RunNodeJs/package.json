@@ -1,0 +1,17 @@
+{
+  "name": "iaqosphone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "dependencies": {
+    "firmata": "^2.0.0",
+    "http": "0.0.0",
+    "opn": "^5.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
