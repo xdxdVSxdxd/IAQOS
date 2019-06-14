@@ -1,0 +1,43 @@
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "dominio1", "app": "app1", "function": "f1", "params" : [ ["v1", 1], ["v2" , 2], ["v3" , 5]  ] }
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS", "token":"aaaaaaaaaaaa",  "domain": "dominio1", "app": "app1", "function": "f1", "params" : [ ["v1", 1], ["v2" , 2], ["v3" , 5]  ] }
+
+
+
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "updateuser", "params" : [  ["name","mariuzzo"] , ["pwd","1234"] , ["role","user"] , ["namefrom" , "mariolino" ] ] }
+https://iaqos.online/iaqos-engine/?q={	"name": "mario", "pwd": "1234",	"domain": "", "app": "", "function": "updateuser", "params" : [  ["name","mariotto"] , ["pwd","1234"] , ["role","user"] , ["namefrom" , "mariello" ] ] }
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "deleteuser", "params" : [  [ "name" , "IAQOS"] ]  }
+
+
+
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "createdomain", "params" : [  [ "name" , "d1"] ]  }
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "deletedomain", "params" : [  [ "name" , "d1"] ]  }
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "createapp", "params" : [  [ "appname" , "a1"] , [ "domainname" , "d1"] ]  }
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "deleteapp", "params" : [  [ "appname" , "a1"] , [ "domainname" , "d1"] ]  }
+
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "createdomain", "params" : [  [ "name" , "test-domain"] ]  }
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "createapp", "params" : [  [ "appname" , "test-app"] , [ "domainname" , "test-domain"] ]  }
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "", "app": "", "function": "deleteapp", "params" : [  [ "appname" , "test-app"] , [ "domainname" , "test-domain"] ]  }
+
+
+
+
+https://iaqos.online/iaqos-engine/?q={	"name": "IAQOS", "pwd": "IAQOS",	"domain": "test-domain", "function": "getTEXTSnetwork", "params" : [  ]  }
+
