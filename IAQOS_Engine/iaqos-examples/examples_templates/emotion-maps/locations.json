@@ -1,0 +1,30 @@
+{
+	"locations": [
+		{
+			"nome" : "Parco Sangalli",
+			"search": "sangalli",
+			"lat": 41.8757138,
+			"lon": 12.5438975
+		},
+		{
+			"nome" : "Villa De Sanctis",
+			"search": "sanctis",
+			"lat": 41.8792621,
+			"lon": 12.5508798
+		},
+		{
+			"nome" : "Cannone",
+			"search": "cannone",
+			"lat": 41.8790353,
+			"lon": 12.5442838
+		},
+		{
+			"nome" : "Scuola Pisacane",
+			"search": "pisacane",
+			"lat": 41.8821386,
+			"lon": 12.5437815
+		}
+
+	]
+}
+

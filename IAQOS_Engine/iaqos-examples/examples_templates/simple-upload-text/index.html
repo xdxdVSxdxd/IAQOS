@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>IAQOS engine examples: simple textual data upload</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">  
+
+</head>
+
+<body>
+	<h1>IAQOS engine examples: semplice upload dato in formato testuale</h1>
+
+
+        <h1>Autenticazione</h1>
+
+        <p>Scrivi il tuo nome utente su IAQOS:</p>
+        <input type="text" id="name" name="name" />
+
+        <p>La tua password su IAQOS:</p>
+        <input type="password" id="pwd" name="pwd" />
+	
+        <hr />
+
+        <h1>Inserire il dato</h2>
+
+        <p>Inserisci il nome del dominio in cui vuoi inserire il dato:</p>
+        <input type="text" id="domain" name="domain" />
+
+        <p>Scrivi un titolo o una label o breve descrizione per questo dato:</p>
+        <input type="text" id="label" name="label" />
+                  
+        <p>Scrivi o copia+incolla qui sotto il dato in forma testuale che vuoi inserire:</p>
+        <textarea rows="4" cols="50" name="content" id="content"> </textarea> 
+
+        <p>Scegli che tipo di dato è (vedi sotto per le descrizioni):</p>
+        <select name="type" id="type">
+            <option value="TEXTS">testo</option>
+        </select> 
+
+    	<p>Clicca quando vuoi salvare:</p>
+    	<input type="button" id="invia" name="invia" value="SALVA" />
+
+        <hr />
+        
+        <h1>I tipi di dato</h2>
+
+        <p><strong>testo</strong>: testo scritto, che può essere creato scrivendo nell'area di testo qui sopra, o facendo copia incolla di contenuti testuali.</p>
+
+	    <script src="../js/jquery.js"></script>
+	    <script src="index.js"></script>
+</body>
+</html>

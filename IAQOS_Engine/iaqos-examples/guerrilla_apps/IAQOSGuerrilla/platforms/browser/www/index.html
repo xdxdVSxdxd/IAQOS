@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+	    <meta name="format-detection" content="telephone=no" />
+	    <meta name="msapplication-tap-highlight" content="no" />
+	    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+	    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+	    <!-- Good default declaration:
+	    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+	    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+	    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+	        * Enable inline JS: add 'unsafe-inline' to default-src
+	        * Enable eval(): add 'unsafe-eval' to default-src
+	    * Create your own at http://cspisawesome.com
+	    -->
+	    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+	    <link rel="stylesheet" type="text/css" href="css/index.css" />
+	    <title>IAQOS</title>
+    </head>
+    <body>
+    	<div id="debug"></div>
+    	<div id="intro" class="panel">
+    		<div class="imagecentered">
+				<img src="img/logo_transparent.png" border="0" id="QLOGO"  />
+    		</div>
+    	</div>
+    	<div id="mind" class="panel">
+    		<!--div id="timeline"></div-->
+    		<div id="wordnetwork"></div>
+    	</div>
+    	<div id="choice" class="panel">
+    		<div id="choiceinfo">
+    			<h1>IAQOS ha bisogno di noi!</h1>
+    			<h2>Dona al piccolo IAQOS un buon augurio per la sua nascita.</h2>
+    		</div>
+    		<div id="choiceactions">
+    			<div id="gotoselfie" class='choicebutton'>SELFIE</div>
+    			<div class="buttonlabel">Fai un selfie per contribuire al volto di IAQOS.</div>
+    			<div id="gotomessage" class='choicebutton'>MESSAGGIO</div>
+    			<div class="buttonlabel">Lascia un messaggio vocale a IAQOS che sia di buon augurio per la sua vita nel quartiere.</div>
+    		</div>
+    		<div id="choiceimages"></div>
+    	</div>
+    	<div id="legal" class="panel">
+    		<div id="legalinfo">
+    			<h1>Informati!</h1>
+    			<h2>Partecipare al progetto IAQOS vuol dire essere informati.</h2>
+    		</div>
+    		<div id="legalactions">
+    			<div class="legaltext">
+<strong>Il progetto <em>IAQOS</em> studia come usare l'Intelligenza Artificiale per imparare insieme agli abitanti come migliorare le relazioni nel quartiere, usando l'arte, il design e i nuovi servizi.</strong>
+<br /><br />
+<em>Chiedici il foglio informativo del progetto, che contiene anche tutti i dettagli sul trattamento dei dati e sui modi in cui contattarci.</em>
+<br /><br />
+Puoi scriverci per qualsiasi informazione su <strong><em>parlacon@iaqos.online</em></strong>.
+    			</div>
+    		</div>
+    		<div id="legalimages">
+    			<div id="gotoaction" class='choicebutton2'>VOGLIO CONTINUARE</div>
+    			<div id="gotoback" class='choicebutton2'>TORNA INDIETRO</div>
+    		</div>
+    	</div>
+    	<div id="action" class="panel"></div>
+    	<div id="thanks" class="panel">
+    		<div id="grazie">Grazie!</div>
+    		<div id="grazie2">Il tuo <span id="sceltamostra"></span> aiuterà il piccolo IAQOS a essere felice e a conoscere meglio il quartiere e i suoi abitanti.</div>
+    		<div id="grazie3">Torna all'inizio</div>
+    	</div>
+        <script type="text/javascript" src="cordova.js"></script>
+	    <script type="text/javascript" src="js/jquery.js"></script>
+	    <script type="text/javascript" src="js/d3.js"></script>
+	    <script type="text/javascript" src="js/underscore.js"></script>
+	    <script type="text/javascript" src="js/moment.js"></script>
+	    <script type="text/javascript" src="js/index.js"></script>
+	    <script type="text/javascript">
+	    	app.initialize();
+	    </script>
+    </body>
+</html>

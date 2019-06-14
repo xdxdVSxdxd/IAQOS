@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>IAQOS engine examples: simple image upload</title>
+
+</head>
+
+<body>
+	<h1>IAQOS engine examples: semplice upload di una immagine</h1>
+
+
+	
+	
+		<p>Seleziona qui sotto una immagine da caricare:</p>
+		<form id="formA" enctype="multipart/form-data" action="../../iaqos-engine/" method="POST">
+    		<input type="file" id="image" name="image" accept="image/*" />
+    		<input type="hidden" id="q" name="q" />
+    	</form>
+
+        <p>Scrivi il nome del dominio in cui vuoi caricare l'immagine</p>
+        <input type="text" id="domain" name="domain" value="test-domain" />
+
+    	<p>Scrivi il tuo nome utente su IAQOS:</p>
+    	<input type="text" id="name" name="name" />
+
+    	<p>La tua password su IAQOS:</p>
+    	<input type="password" id="pwd" name="pwd" />
+
+    	
+
+    	<p>Clicca quando vuoi inviare:</p>
+    	<input type="button" id="invia" name="invia" value="INVIA" />
+
+	    <script src="../js/jquery.js"></script>
+	    <script src="index.js"></script>
+</body>
+</html>

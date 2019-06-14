@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Pixeled';
+    src: url('Pixeled.woff2') format('woff2'),
+        url('Pixeled.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+body,html{
+	width: 480px;
+	height: 320px;
+	margin: 0px;
+	padding: 0px;
+	background: #000000;
+	color: #00FF00;
+	font-family: 'Pixeled';
+    font-weight: normal;
+    font-style: normal;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+
+#container{
+	width: 480px;
+	height: 320px;
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	z-index: 100;
+	overflow: hidden;
+}
+
+
+.scene{
+	width: 480px;
+	height: 320px;
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	z-index: 100;
+	overflow: hidden;	
+}
+
+#scene0{
+	z-index: 900;
+	background: transparent;
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+
+#scene1,#scene2,#scene3,#scene4,#scene5,#scene6{
+	display: none;
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+
+#fondodx{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font: 10px monospace;
+	color: blink;
+}
+
+#IAQOSgrande{
+	font-family: 'Pixeled';
+    font-weight: normal;
+    font-style: normal;
+	font-size: 70px;
+	text-align: center;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	margin-top: 40px;
+	color: #00FF00;
+}
+
+
+#IAQOSSaysSomething,#IAQOSSaysSomething2,#IAQOSSaysSomething3,#IAQOSSaysSomething4{
+	padding: 20px;
+	font: 25px monospace;
+}
+
+#speaktoIAQOS{
+	color: #FFFFFF;
+	font-family: 'Pixeled';
+    font-weight: normal;
+    font-style: normal;
+	font-size: 10px;
+	padding: 20px;
+}
+
+

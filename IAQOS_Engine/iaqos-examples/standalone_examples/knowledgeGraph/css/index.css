@@ -1,0 +1,41 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: #FFFFFF;
+	color: #000000;
+	font: 22px 'Work Sans','Helvetica Neue', sans-serif;
+	font-weight: 100;
+}
+
+
+#vizcontainer{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	background: #FFFFFF;
+}
+
+#uicontainer{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	padding: 0px;
+	margin: 0px;
+	width: 150px;
+	height: 30px;
+	z-index: 100;
+	font-size: 22px;
+	background: transparent;	
+}
+
+.link{
+	stroke-opacity: 1;
+	stroke: #999999;
+}

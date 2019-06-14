@@ -1,0 +1,73 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "online.iaqos.iaqosguerrilla"
+        }
+    }
+}

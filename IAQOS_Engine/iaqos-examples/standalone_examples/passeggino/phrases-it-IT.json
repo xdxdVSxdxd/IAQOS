@@ -1,0 +1,52 @@
+{
+	"phrases": [
+
+		{
+			"name": "[NonCiSiamoCapiti]",
+			"phrase": ["Forse non ci siamo capiti. Riproviamo."]
+		},
+
+		{
+			"name": "[NonSoMolto]",
+			"phrase": ["ah, non so molto di queste cose."]
+		},
+
+		{
+			"name": "[Greeting]",
+			"phrase": ["Ciao! Sono IAQOS!"]
+		},
+
+		{
+			"name": "[TellMe]",
+			"phrase": ["Dimmi una parola","Vorrei imparare una cosa: mi insegni una parola?"]
+		},
+
+		{
+			"name": "[QuestoQuelCheSo]",
+			"phrase": ["Questo è quello che so di questa cosa."]
+		},
+
+		{
+			"name": "[DealsWith]",
+			"phrase": [" ha a che vedere con "," ha qualcosa a che fare con "," c'entra con "]
+		},
+
+		{
+			"name": "[IncipitOfGeneratedMessage]",
+			"phrase": ["Per esempio, tra le cose che conosco, c'è che ","Potrei dirti che ","So che "]
+		},
+
+		{
+			"name": "[DammiDiPiu]",
+			"phrase": ["Forse puoi dirmi qualcosa di più su questo argomento?","Mi insegni qualcosa su questo argomento?","Tu ne sai di più?"]
+		},
+
+		{
+			"name": "[AggiungoAQuelCheSo]",
+			"phrase": ["Interessante!","Oh, grazie: mi aiuti a stabilire connessioni tra le cose.","Ci devo riflettere."]
+		}
+
+
+
+	]
+}
