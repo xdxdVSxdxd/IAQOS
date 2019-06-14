@@ -6,5 +6,9 @@ Il progetto nasce dalla collaborazione tra [Sineglossa Creative Ground](http://w
 
 Questo repository di codice e documentazione contiene:
 
-* il motore di IA di IAQOS, progettato insieme ad un semplice sistema di autenticazione per utilizzarlo
-* alcuni esempi di utilizzo di IAQOS
+* il [motore di IA di IAQOS](https://github.com/xdxdVSxdxd/IAQOS/tree/master/IAQOS_Engine/iaqos-engine), progettato insieme ad un semplice sistema di autenticazione per utilizzarlo
+* alcuni [esempi di utilizzo di IAQOS](https://github.com/xdxdVSxdxd/IAQOS/tree/master/IAQOS_Engine/iaqos-examples)
+
+Per capire come installare e utilizzare IAQOS, si può consultare il [WIKI](https://github.com/xdxdVSxdxd/IAQOS/wiki).
+
+Per maggiori informazioni sul progetto, [è possibile visitare il sito](https://iaqos.online/).
