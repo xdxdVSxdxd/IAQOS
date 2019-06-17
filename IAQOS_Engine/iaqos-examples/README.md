@@ -1,0 +1,7 @@
+Questa cartella contiene diversi tipi di esempi di utilizzo di IAQOS.
+
+Si ricorda che per utilizzare gli esempi occorre aver installato la piattaforma IAQOS e la piattaforma Human Ecosystems, come spiegato nel [Wiki](https://github.com/xdxdVSxdxd/IAQOS/wiki/Installazione).
+
+* la cartella [example_tamplates](https://github.com/xdxdVSxdxd/IAQOS/tree/master/IAQOS_Engine/iaqos-examples/examples_templates) contiene esempi di base, che consentono di accedere alle funzioni di base della API di IAQOS
+* la cartella [IAQOSGuerrilla](https://github.com/xdxdVSxdxd/IAQOS/tree/master/IAQOS_Engine/iaqos-examples/guerrilla_apps/IAQOSGuerrilla) contiene un progetto [Cordova](https://cordova.apache.org/) per creare una applicazione per tablet con cui contribuire alla conoscenza di IAQOS attraverso testi e immagini; (nota: è l'applicazione che è stata utilizzata nella campagna di guerrilla marketing territoriale alla nascita di IAQOS)
+* la cartella [standalone_examples](https://github.com/xdxdVSxdxd/IAQOS/tree/master/IAQOS_Engine/iaqos-examples/standalone_examples) contiene esempi più avanzati, inclusi i software utilizzati nelle installazioni, il software del miniscreen realizzato con [Raspberry Pi](https://www.raspberrypi.org/) che può ospitare una interfaccia verso IAQOS e i software per generare e visualizzare le mappe emozionali del quartiere
