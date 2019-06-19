@@ -1,0 +1,1 @@
+Un esempio per aggiungere un messaggio vocale a IAQOS direttamente usando in maniera anonima il sistema Human Ecosystems sottostante.

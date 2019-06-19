@@ -1,0 +1,3 @@
+Interfaccia completa per caricare su IAQOS dati geografici composti da testo, coordinate e dati strutturati.
+
+Utilizzato per caricare le storie emozionali nel quartiere di Torpignattara nei progetti formativi sull'autonomia dei bambini nel quartiere, che si tengono presso la Scuola Carlo Pisacane nel quartiere di Torpignattara a Roma. Le storie e i dati associati (emozioni, immagini, coordinate, percorsi...) vengono elaborate da IAQOS e possono generare informazioni sull'esperienza del quartiere, sulla sua leggibilità, sulla sua capacità di generare paure, ansia, curiosità, gioia, sicurezza e altre espressioni emozionali. Per esempio per generare percorsi per i bambini, luoghi di incontro eccetera.
